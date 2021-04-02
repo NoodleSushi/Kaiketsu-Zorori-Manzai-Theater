@@ -6,10 +6,21 @@ namespace Game
 {
     public class SubtitleLabelClass : Label
     {
+        [Export] public NodePath ASPTimedSingleNodePath;
+        [Export] public NodePath GameHandlerNodePath;
+        private ASPTimedSingle @ASPTimedSingle;
+        private GameHandler @GameHandler;
         private Array TranslationData = new Array();
 
         public override void _Ready()
         {
+            @ASPTimedSingle = GetNode<ASPTimedSingle>(ASPTimedSingleNodePath);
+            @ASPTimedSingle.Connect(nameof(@ASPTimedSingle.NotifiedPlayback), this, nameof(_on_ASPTimedSingle_NotifiedPlayback));
+
+            @GameHandler = GetNode<GameHandler>(GameHandlerNodePath);
+            @GameHandler.Connect(nameof(@GameHandler.BGMStageGenerated), this, nameof(Clear));
+            @GameHandler.Connect(nameof(@GameHandler.GameOvered), this, nameof(Clear));
+
             File translated = new File();
             translated.Open("res://subtitles.json", File.ModeFlags.Read);
             string translatedJSON = translated.GetAsText();
@@ -20,10 +31,10 @@ namespace Game
             TranslationData = (Array) Data["zorori_linesjp"];
         }
 
-        public void ConnectToASPTimedSingle(ASPTimedSingle @ASPTimedSingle)
+        /*public void ConnectToASPTimedSingle(ASPTimedSingle @ASPTimedSingle)
         {
-            ASPTimedSingle.Connect(nameof(@ASPTimedSingle.NotifiedPlayback), this, nameof(_on_ASPTimedSingle_NotifiedPlayback));
-        }
+            @ASPTimedSingle.Connect(nameof(@ASPTimedSingle.NotifiedPlayback), this, nameof(_on_ASPTimedSingle_NotifiedPlayback));
+        }*/
 
         public void _on_ASPTimedSingle_NotifiedPlayback(bool isPlaying, string IdType, int Id)
         {

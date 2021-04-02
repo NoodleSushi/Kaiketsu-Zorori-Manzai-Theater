@@ -7,6 +7,9 @@ namespace Game
     {
         const float MAIN_BPM = 98;
 
+        [Signal] public delegate void BGMStageGenerated();
+        [Signal] public delegate void GameOvered();
+
         [Export] public NodePath BgmPlayerPath;
         [Export] public NodePath GagPlayerPath;
         [Export] public NodePath PlrPlayerPath;
@@ -14,7 +17,6 @@ namespace Game
         [Export] public NodePath DebugLabelPath;
         [Export] public NodePath ScoreLabelPath;
         [Export] public NodePath BestScoreLabelPath;
-        [Export] public NodePath SubtitleLabelPath;
         [Export] public NodePath BPMLabelPath;
         [Export] public bool isActive = true;
         private AudioPlayer.Bgm BgmPlayer;
@@ -24,7 +26,6 @@ namespace Game
         private Label DebugLabel;
         private ScoreLabelClass ScoreLabel;
         private BestScoreLabelClass BestScoreLabel;
-        private SubtitleLabelClass SubtitleLabel;
         private Label BPMLabel;
 
         readonly private GagSystemClass GagSystem = new GagSystemClass();
@@ -90,10 +91,7 @@ namespace Game
             
             BestScoreLabel = GetNode<BestScoreLabelClass>(BestScoreLabelPath);
             BestScore = ConfigHandler.GetScore();
-
-            SubtitleLabel = GetNode<SubtitleLabelClass>(SubtitleLabelPath);
             BPMLabel = GetNode<Label>(BPMLabelPath);
-            SubtitleLabel.ConnectToASPTimedSingle(GagPlayer);
 
             isActive = false;
             //GenerateNPlayBGMStage();
@@ -149,7 +147,7 @@ namespace Game
             if (!isSafe)
             {
                 isActive = false;
-                Stop();
+                GameOver();
             }
         }
 
@@ -169,14 +167,14 @@ namespace Game
             return (float) ((beat + 4 * bar) * 60 / MAIN_BPM);
         }
 
-        private void Stop()
+        private void GameOver()
         {
             GagPlayer.ClearPlaybackMarkerQueue();
             PlrPlayer.Stop();
             BgmPlayer.Stop();
             gameAnimationTree.ClearAll();
-            SubtitleLabel.Clear();
             ConfigHandler.SaveScore(BestScore);
+            EmitSignal(nameof(GameOvered));
         }
 
         private void Reset()
@@ -224,13 +222,13 @@ namespace Game
             PoolTimingAnalyzer.Reset(GagSystem.GenerateMissionList(), GagSystem.GenerateIsPointList());
 
             CurrentStage++;
+            EmitSignal(nameof(BGMStageGenerated));
         }
 
         public void _on_BgmPlayer_finished()
         {
             if (!isActive)
                 return;
-            SubtitleLabel.Clear();
             GenerateNPlayBGMStage();
         }
     }

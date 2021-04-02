@@ -149,7 +149,7 @@ fadein_time = 0.0
 fadeout_time = 0.0
 
 [sub_resource type="AnimationNodeBlendTree" id=31]
-graph_offset = Vector2( -1220, -413 )
+graph_offset = Vector2( -514.667, -981 )
 nodes/InitAnimation/node = SubResource( 1 )
 nodes/InitAnimation/position = Vector2( -1306.67, -986.667 )
 nodes/TimeScale/node = SubResource( 2 )
@@ -280,15 +280,11 @@ script = ExtResource( 4 )
 
 [node name="DisplayHandler" parent="." instance=ExtResource( 5 )]
 
-[node name="Inoshishi" parent="DisplayHandler/Actors/InoshishiSprite" index="1"]
-frame = 6
-
 [node name="Ishishi" parent="DisplayHandler/Actors/InoshishiSprite" index="2"]
 position = Vector2( 48, -115.5 )
 
 [node name="Noshishi" parent="DisplayHandler/Actors/InoshishiSprite" index="3"]
 position = Vector2( -47, -108.5 )
-frame = 0
 
 [node name="Pot" parent="DisplayHandler/Actors/ZororiSprite" index="3"]
 frame = 5
@@ -350,6 +346,8 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+ASPTimedSingleNodePath = NodePath("../../../AudioPlayers/Gag")
+GameHandlerNodePath = NodePath("../../../GameHandler")
 
 [node name="DebugLabel" type="Label" parent="CanvasLayer/GUI"]
 margin_right = 40.0
