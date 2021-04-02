@@ -1,0 +1,361 @@
+[gd_scene load_steps=47 format=2]
+
+[ext_resource path="res://Scripts/Game/GameHandler.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Game/AudioPlayer/Bgm.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Game/AudioPlayer/Plr.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/Game/AudioPlayer/Gag.cs" type="Script" id=4]
+[ext_resource path="res://Scenes/DisplayHandler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/JapFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scripts/Game/GameAnimationTree.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/Game/ScoreLabelClass.cs" type="Script" id=8]
+[ext_resource path="res://Scripts/Game/SubtitleLabelClass.cs" type="Script" id=9]
+[ext_resource path="res://Scripts/Rhythmer/NodeClasses/ASPTimed/ASPTimedCallback.cs" type="Script" id=10]
+[ext_resource path="res://Fonts/07YasashisaAntique.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Scripts/Game/BestScoreLabelClass.cs" type="Script" id=12]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "init"
+
+[sub_resource type="AnimationNodeTimeScale" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "audience_laugh"
+
+[sub_resource type="AnimationNodeOneShot" id=4]
+filter_enabled = true
+filters = [ "AudienceLayer/Chairs/Audience:frame", "AudienceLayer/Chairs/Audience:offset", "AudienceLayer/Chairs/Audience:position" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "audience_laugh_fail"
+
+[sub_resource type="AnimationNodeOneShot" id=6]
+filter_enabled = true
+filters = [ "AudienceLayer/Chairs/Audience:frame", "AudienceLayer/Chairs/Audience:offset", "AudienceLayer/Chairs/Audience:position" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "audience_pulse"
+
+[sub_resource type="AnimationNodeOneShot" id=8]
+filter_enabled = true
+filters = [ "AudienceLayer/Chairs/Audience:position" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "bgcontrol_pulse"
+
+[sub_resource type="AnimationNodeOneShot" id=10]
+filter_enabled = true
+filters = [ "Doors/StageBG/BGControl:rect_position" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "inoshishi_panic"
+
+[sub_resource type="AnimationNodeOneShot" id=14]
+filter_enabled = true
+filters = [ "Actors/InoshishiSprite/Inoshishi:frame", "Actors/InoshishiSprite/Ishishi:frame", "Actors/InoshishiSprite/Noshishi:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "inoshishi_pulse"
+
+[sub_resource type="AnimationNodeOneShot" id=16]
+filter_enabled = true
+filters = [ "Actors/InoshishiSprite/Inoshishi:frame", "Actors/InoshishiSprite/Ishishi:frame", "Actors/InoshishiSprite/Noshishi:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "intro"
+
+[sub_resource type="AnimationNodeOneShot" id=18]
+filter_enabled = true
+filters = [ "Camera2D:position", "Camera2D:position:y" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "ishishi_hai"
+
+[sub_resource type="AnimationNodeOneShot" id=34]
+filter_enabled = true
+filters = [ "Actors/InoshishiSprite/Ishishi:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "mini_zorori_pulse"
+
+[sub_resource type="AnimationNodeOneShot" id=20]
+filter_enabled = true
+filters = [ "Doors/StageBG/MiniZororis:position" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "next_stage"
+
+[sub_resource type="AnimationNodeOneShot" id=22]
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "noshishi_hai"
+
+[sub_resource type="AnimationNodeOneShot" id=36]
+filter_enabled = true
+filters = [ "Actors/InoshishiSprite/Noshishi:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "zorori_fail"
+
+[sub_resource type="AnimationNodeOneShot" id=24]
+filter_enabled = true
+filters = [ "Actors/ZororiSprite/Ice:frame", "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Pot:frame", "Actors/ZororiSprite/Pot:position", "Actors/ZororiSprite/Pot:visible", "Actors/ZororiSprite/Zorori:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "zorori_gag"
+
+[sub_resource type="AnimationNodeOneShot" id=26]
+filter_enabled = true
+filters = [ "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "zorori_pulse"
+
+[sub_resource type="AnimationNodeOneShot" id=28]
+filter_enabled = true
+filters = [ "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "zorori_unfrozen"
+
+[sub_resource type="AnimationNodeOneShot" id=30]
+filters = [ "Actors/ZororiSprite/Ice:frame", "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id=31]
+graph_offset = Vector2( -1220, -413 )
+nodes/InitAnimation/node = SubResource( 1 )
+nodes/InitAnimation/position = Vector2( -1306.67, -986.667 )
+nodes/TimeScale/node = SubResource( 2 )
+nodes/TimeScale/position = Vector2( -240, -826.667 )
+nodes/audience_laughAnimation/node = SubResource( 3 )
+nodes/audience_laughAnimation/position = Vector2( -266.667, 53.3333 )
+nodes/audience_laughOneShot/node = SubResource( 4 )
+nodes/audience_laughOneShot/position = Vector2( -26.6667, 0 )
+nodes/audience_laugh_failAnimation/node = SubResource( 5 )
+nodes/audience_laugh_failAnimation/position = Vector2( -346.667, 293.333 )
+nodes/audience_laugh_failOneShot/node = SubResource( 6 )
+nodes/audience_laugh_failOneShot/position = Vector2( -80, 213.333 )
+nodes/audience_pulseAnimation/node = SubResource( 7 )
+nodes/audience_pulseAnimation/position = Vector2( -266.667, -133.333 )
+nodes/audience_pulseOneShot/node = SubResource( 8 )
+nodes/audience_pulseOneShot/position = Vector2( -26.6667, -186.667 )
+nodes/bgcontrol_pulseAnimation/node = SubResource( 9 )
+nodes/bgcontrol_pulseAnimation/position = Vector2( -373.333, 480 )
+nodes/bgcontrol_pulseOneShot/node = SubResource( 10 )
+nodes/bgcontrol_pulseOneShot/position = Vector2( -53.3333, 426.667 )
+nodes/inoshishi_panicAnimation/node = SubResource( 13 )
+nodes/inoshishi_panicAnimation/position = Vector2( -853.333, -293.333 )
+nodes/inoshishi_panicOneShot/node = SubResource( 14 )
+nodes/inoshishi_panicOneShot/position = Vector2( -613.333, -346.667 )
+nodes/inoshishi_pulseAnimation/node = SubResource( 15 )
+nodes/inoshishi_pulseAnimation/position = Vector2( -266.667, -320 )
+nodes/inoshishi_pulseOneShot/node = SubResource( 16 )
+nodes/inoshishi_pulseOneShot/position = Vector2( -26.6667, -373.333 )
+nodes/introAnimation/node = SubResource( 17 )
+nodes/introAnimation/position = Vector2( 160, 240 )
+nodes/introOneShot/node = SubResource( 18 )
+nodes/introOneShot/position = Vector2( 346.667, 186.667 )
+nodes/ishishi_haiAnimation/node = SubResource( 37 )
+nodes/ishishi_haiAnimation/position = Vector2( -80, -853.333 )
+nodes/ishishi_haiOneShot/node = SubResource( 34 )
+nodes/ishishi_haiOneShot/position = Vector2( 160, -933.333 )
+nodes/mini_zorori_pulseAnimation/node = SubResource( 19 )
+nodes/mini_zorori_pulseAnimation/position = Vector2( 213.333, 0 )
+nodes/mini_zorori_pulseOneShot/node = SubResource( 20 )
+nodes/mini_zorori_pulseOneShot/position = Vector2( 480, -53.3333 )
+nodes/next_stageAnimation/node = SubResource( 21 )
+nodes/next_stageAnimation/position = Vector2( -1360, -800 )
+nodes/next_stageOneShot/node = SubResource( 22 )
+nodes/next_stageOneShot/position = Vector2( -1087.67, -875.667 )
+nodes/noshishi_haiAnimation/node = SubResource( 35 )
+nodes/noshishi_haiAnimation/position = Vector2( -80, -720 )
+nodes/noshishi_haiOneShot/node = SubResource( 36 )
+nodes/noshishi_haiOneShot/position = Vector2( 205.667, -749 )
+nodes/output/position = Vector2( 560, 186.667 )
+nodes/zorori_failAnimation/node = SubResource( 23 )
+nodes/zorori_failAnimation/position = Vector2( -826.667, -480 )
+nodes/zorori_failOneShot/node = SubResource( 24 )
+nodes/zorori_failOneShot/position = Vector2( -613.333, -533.333 )
+nodes/zorori_gagAnimation/node = SubResource( 25 )
+nodes/zorori_gagAnimation/position = Vector2( -826.667, -853.333 )
+nodes/zorori_gagOneShot/node = SubResource( 26 )
+nodes/zorori_gagOneShot/position = Vector2( -613.333, -906.667 )
+nodes/zorori_pulseAnimation/node = SubResource( 27 )
+nodes/zorori_pulseAnimation/position = Vector2( -266.667, -506.667 )
+nodes/zorori_pulseOneShot/node = SubResource( 28 )
+nodes/zorori_pulseOneShot/position = Vector2( -26.6667, -560 )
+nodes/zorori_unfrozenAnimation/node = SubResource( 29 )
+nodes/zorori_unfrozenAnimation/position = Vector2( -853.333, -666.667 )
+nodes/zorori_unfrozenOneShot/node = SubResource( 30 )
+nodes/zorori_unfrozenOneShot/position = Vector2( -613.333, -720 )
+node_connections = [ "output", 0, "introOneShot", "bgcontrol_pulseOneShot", 0, "audience_laugh_failOneShot", "bgcontrol_pulseOneShot", 1, "bgcontrol_pulseAnimation", "audience_pulseOneShot", 0, "inoshishi_pulseOneShot", "audience_pulseOneShot", 1, "audience_pulseAnimation", "zorori_unfrozenOneShot", 0, "zorori_gagOneShot", "zorori_unfrozenOneShot", 1, "zorori_unfrozenAnimation", "next_stageOneShot", 0, "InitAnimation", "next_stageOneShot", 1, "next_stageAnimation", "introOneShot", 0, "mini_zorori_pulseOneShot", "introOneShot", 1, "introAnimation", "inoshishi_panicOneShot", 0, "zorori_failOneShot", "inoshishi_panicOneShot", 1, "inoshishi_panicAnimation", "inoshishi_pulseOneShot", 0, "zorori_pulseOneShot", "inoshishi_pulseOneShot", 1, "inoshishi_pulseAnimation", "zorori_gagOneShot", 0, "next_stageOneShot", "zorori_gagOneShot", 1, "zorori_gagAnimation", "zorori_pulseOneShot", 0, "noshishi_haiOneShot", "zorori_pulseOneShot", 1, "zorori_pulseAnimation", "zorori_failOneShot", 0, "zorori_unfrozenOneShot", "zorori_failOneShot", 1, "zorori_failAnimation", "mini_zorori_pulseOneShot", 0, "bgcontrol_pulseOneShot", "mini_zorori_pulseOneShot", 1, "mini_zorori_pulseAnimation", "TimeScale", 0, "inoshishi_panicOneShot", "audience_laugh_failOneShot", 0, "audience_laughOneShot", "audience_laugh_failOneShot", 1, "audience_laugh_failAnimation", "audience_laughOneShot", 0, "audience_pulseOneShot", "audience_laughOneShot", 1, "audience_laughAnimation", "noshishi_haiOneShot", 0, "ishishi_haiOneShot", "noshishi_haiOneShot", 1, "noshishi_haiAnimation", "ishishi_haiOneShot", 0, "TimeScale", "ishishi_haiOneShot", 1, "ishishi_haiAnimation" ]
+
+[sub_resource type="DynamicFont" id=38]
+size = 40
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 11 )
+
+[node name="Game" type="Node"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../DisplayHandler/AnimationPlayer")
+active = true
+parameters/TimeScale/scale = 1.0
+parameters/audience_laughOneShot/active = false
+parameters/audience_laugh_failOneShot/active = false
+parameters/audience_pulseOneShot/active = false
+parameters/bgcontrol_pulseOneShot/active = false
+parameters/inoshishi_panicOneShot/active = false
+parameters/inoshishi_pulseOneShot/active = false
+parameters/introOneShot/active = false
+parameters/ishishi_haiOneShot/active = false
+parameters/mini_zorori_pulseOneShot/active = false
+parameters/next_stageOneShot/active = false
+parameters/noshishi_haiOneShot/active = false
+parameters/zorori_failOneShot/active = false
+parameters/zorori_gagOneShot/active = false
+parameters/zorori_pulseOneShot/active = false
+parameters/zorori_unfrozenOneShot/active = false
+script = ExtResource( 7 )
+
+[node name="Tween" type="Tween" parent="AnimationTree"]
+
+[node name="ASPTimedCallback" type="Node" parent="AnimationTree"]
+script = ExtResource( 10 )
+
+[node name="GameHandler" type="Node" parent="."]
+script = ExtResource( 1 )
+BgmPlayerPath = NodePath("../AudioPlayers/Bgm")
+GagPlayerPath = NodePath("../AudioPlayers/Gag")
+PlrPlayerPath = NodePath("../AudioPlayers/Plr")
+GameAnimationTreePath = NodePath("../AnimationTree")
+DebugLabelPath = NodePath("../CanvasLayer/GUI/DebugLabel")
+ScoreLabelPath = NodePath("../CanvasLayer/GUI/ScoreLabel")
+BestScoreLabelPath = NodePath("../CanvasLayer/GUI/BestScoreLabel")
+SubtitleLabelPath = NodePath("../CanvasLayer/GUI/SubtitleLabel")
+BPMLabelPath = NodePath("../DisplayHandler/Doors/StageBG/BGControl/BPMLabel")
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Plr" type="AudioStreamPlayer" parent="AudioPlayers"]
+bus = "Inoshishi"
+script = ExtResource( 3 )
+
+[node name="Bgm" type="AudioStreamPlayer" parent="AudioPlayers"]
+script = ExtResource( 2 )
+BPM = 98.0
+
+[node name="Gag" type="Node" parent="AudioPlayers"]
+script = ExtResource( 4 )
+
+[node name="DisplayHandler" parent="." instance=ExtResource( 5 )]
+
+[node name="Inoshishi" parent="DisplayHandler/Actors/InoshishiSprite" index="1"]
+frame = 6
+
+[node name="Ishishi" parent="DisplayHandler/Actors/InoshishiSprite" index="2"]
+position = Vector2( 48, -115.5 )
+
+[node name="Noshishi" parent="DisplayHandler/Actors/InoshishiSprite" index="3"]
+position = Vector2( -47, -108.5 )
+frame = 0
+
+[node name="Pot" parent="DisplayHandler/Actors/ZororiSprite" index="3"]
+frame = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -336.0
+margin_top = -186.516
+margin_right = -99.9999
+margin_bottom = -121.516
+custom_fonts/font = ExtResource( 6 )
+text = "0 笑"
+align = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BestScoreLabel" type="Label" parent="CanvasLayer/GUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -425.0
+margin_top = -118.017
+margin_right = -99.9999
+margin_bottom = -53.0167
+grow_horizontal = 0
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 0.247059, 0, 1 )
+text = "自己ベスト     0"
+align = 2
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SubtitleLabel" type="Label" parent="CanvasLayer/GUI"]
+anchor_right = 1.0
+margin_top = 50.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugLabel" type="Label" parent="CanvasLayer/GUI"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="DisplayHandler"]

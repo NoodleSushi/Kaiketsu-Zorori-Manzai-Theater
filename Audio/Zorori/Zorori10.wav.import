@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Zorori10.wav-a787e4d1a45536fee5b56ee1cc64aaf6.sample"
+
+[deps]
+
+source_file="res://Audio/Zorori/Zorori10.wav"
+dest_files=[ "res://.import/Zorori10.wav-a787e4d1a45536fee5b56ee1cc64aaf6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

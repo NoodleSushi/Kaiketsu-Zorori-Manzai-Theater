@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hai! voice.wav-075c72c1fdca7692760a9145749336ea.sample"
+
+[deps]
+
+source_file="res://Audio/Hai! voice.wav"
+dest_files=[ "res://.import/Hai! voice.wav-075c72c1fdca7692760a9145749336ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

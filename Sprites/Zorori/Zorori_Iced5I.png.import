@@ -1,0 +1,17 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/Zorori_Iced5I.png-3c02a7dd44a9e34d688cf8fc6d367caa.res"
+group_file="res://Sprites/Zorori/Zorori_Atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://Sprites/Zorori/Zorori_Iced5I.png"
+dest_files=[ "res://.import/Zorori_Iced5I.png-3c02a7dd44a9e34d688cf8fc6d367caa.res" ]
+
+[params]
+
+atlas_file="res://Sprites/Zorori/Zorori_Atlas.png"
+import_mode=0

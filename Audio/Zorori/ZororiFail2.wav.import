@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ZororiFail2.wav-727017f9125d501a07f0fc4969e7e9cf.sample"
+
+[deps]
+
+source_file="res://Audio/Zorori/ZororiFail2.wav"
+dest_files=[ "res://.import/ZororiFail2.wav-727017f9125d501a07f0fc4969e7e9cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
