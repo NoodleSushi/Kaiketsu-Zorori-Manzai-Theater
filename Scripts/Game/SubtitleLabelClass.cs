@@ -31,11 +31,6 @@ namespace Game
             TranslationData = (Array) Data["zorori_linesjp"];
         }
 
-        /*public void ConnectToASPTimedSingle(ASPTimedSingle @ASPTimedSingle)
-        {
-            @ASPTimedSingle.Connect(nameof(@ASPTimedSingle.NotifiedPlayback), this, nameof(_on_ASPTimedSingle_NotifiedPlayback));
-        }*/
-
         public void _on_ASPTimedSingle_NotifiedPlayback(bool isPlaying, string IdType, int Id)
         {
             if (IdType == "fail") Text = "";

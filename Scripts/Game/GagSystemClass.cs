@@ -15,7 +15,6 @@ namespace Game
         }
         public sbyte StageBGMIndex
         {
-            // get => (sbyte)(Stage == 0 ? 0 : Stage == 6 ? 2 : 1);
             get => Stage;
         }
         public sbyte StageBGMBars

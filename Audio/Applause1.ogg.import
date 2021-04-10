@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Applause1.ogg-76c48030571880229d3e28d57bafc01f.oggstr"
+
+[deps]
+
+source_file="res://Audio/Applause1.ogg"
+dest_files=[ "res://.import/Applause1.ogg-76c48030571880229d3e28d57bafc01f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

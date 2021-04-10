@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hai! voice.wav-075c72c1fdca7692760a9145749336ea.sample"
+path="res://.import/Fail.wav-08e5d84d4515edad532610aa14ac8393.sample"
 
 [deps]
 
-source_file="res://Audio/Hai! voice.wav"
-dest_files=[ "res://.import/Hai! voice.wav-075c72c1fdca7692760a9145749336ea.sample" ]
+source_file="res://Audio/Fail.wav"
+dest_files=[ "res://.import/Fail.wav-08e5d84d4515edad532610aa14ac8393.sample" ]
 
 [params]
 

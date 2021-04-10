@@ -23,12 +23,8 @@ namespace Utils
             while (Pool.Count < UniqueSize)
             {
                 int _NewInt = RNG.RandiRange(0, MaxInt - 1);
-                // GD.Print(_NewInt);
-                // GD.Print(Pool);
                 if (!Pool.Contains(_NewInt))
-                {
                     Pool.Add(_NewInt);
-                }
             }
         }
 

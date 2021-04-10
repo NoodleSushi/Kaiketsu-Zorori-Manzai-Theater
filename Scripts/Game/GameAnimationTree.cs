@@ -6,13 +6,11 @@ namespace Game
 {
     public class GameAnimationTree : AnimationTree
     {
-        // private Tween tween;
         private ASPTimedCallback @ASPTimedCallback;
         public AudioPlayer.Bgm BgmPlayer;
 
         public override void _Ready()
         {
-            // tween = GetNode<Tween>("Tween");
             @ASPTimedCallback = GetNode<ASPTimedCallback>("ASPTimedCallback");
         }
 
@@ -27,8 +25,6 @@ namespace Game
             if (BgmPlayer is null)
                 return;
             float calculatedTime = Mathf.Max(0, (time - (float) RS.GetASPTimeSec(BgmPlayer)) / BgmPlayer.PitchScale);
-            // GD.Print("CALLBACK ADDED");
-            // tween.InterpolateCallback(this, calculatedTime, "set", $"parameters/{AnimationName}OneShot/active", true);
             ASPTimedCallback.AddCallback(this, calculatedTime, "set", $"parameters/{AnimationName}OneShot/active", true);
         }
 
@@ -37,10 +33,6 @@ namespace Game
         public void SetTimeScale(float TimeScale) => Set("parameters/TimeScale/scale", TimeScale);
 
         public void ClearAll() => @ASPTimedCallback.ClearCallbackQueue();
-
-        // public void StopAll() => tween.StopAll();
-
-        // public void PlayOneShots() => tween.Start();
 
         public void GenerateBeginningOneShots(float Bpm, bool isBeginning)
         {

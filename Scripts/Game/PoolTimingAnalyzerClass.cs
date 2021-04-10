@@ -5,7 +5,6 @@ namespace Game
 {
     public class PoolTimingAnalyzerClass
     {
-        // public const float DISTANCE_LIMIT = 0.125f;
         public const float DIFFERENCE_RANGE_MIN = -0.125f;
         public const float DIFFERENCE_RANGE_MAX = 0.1875f;
 
@@ -38,11 +37,9 @@ namespace Game
             bool isInputAvailable = InputList.Count - 1 >= index;
             float inputTime = isInputAvailable ? InputList[index] : inputPlaceholder;
             float missionTime = MissionList[index];
-            // float distance = Mathf.Abs(inputTime - missionTime);
             float difference = inputTime - missionTime;
             bool isInputOutOfRange = !(DIFFERENCE_RANGE_MIN <= difference && difference <= DIFFERENCE_RANGE_MAX);
             bool isOopsie = (isInputOutOfRange && ((!isInputAvailable && inputTime > missionTime) || isInputAvailable));
-            // return (distance > DISTANCE_LIMIT && ((!isInputAvailable && inputTime > missionTime) || isInputAvailable));
             if (isOopsie)
             {
                 GD.Print("isInputOutOfRange: ", isInputOutOfRange);   

@@ -400,3 +400,4 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/godot,visualstudio,visualstudiocode,monodevelop
 
 *.psd
+*.xcf

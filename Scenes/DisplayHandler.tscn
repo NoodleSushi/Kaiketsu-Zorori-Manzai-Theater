@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Sprites/Zorori/Zorori_Iced5.png" type="Texture" id=1]
 [ext_resource path="res://Materials/OutlineMaterial.material" type="Material" id=2]
@@ -59,6 +59,8 @@
 [ext_resource path="res://Fonts/07YasashisaAntique.ttf" type="DynamicFontData" id=57]
 [ext_resource path="res://Sprites/Ishishi.png" type="Texture" id=58]
 [ext_resource path="res://Sprites/Noshishi.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/Zorori/Zorori_Drag.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/Inoshishi/Inoshishi_Drag.png" type="Texture" id=62]
 
 [sub_resource type="Animation" id=1]
 resource_name = "audience_laugh"
@@ -148,6 +150,311 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+resource_name = "game_over"
+length = 4.0
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Doors:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Floor:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Walls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CurtainsLayer1/Curtain_Top:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CurtainsLayer2/Curtain_Side:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CurtainsLayer2/Curtain_Side2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudienceLayer/Chairs:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 0.796078, 0.796078, 0.796078, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Actors/ZororiSprite/Shadow:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.215686 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Actors/InoshishiSprite/Shadow:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.215686 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Spotlight1:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Spotlight2:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.747 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Actors/ZororiSprite/ZororiDrag2D/ZororiDrag:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.83333, 2.33333, 2.41667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Actors/ZororiSprite/ZororiDrag2D/ZororiDrag:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1.1487, 1 ),
+"update": 0,
+"values": [ Vector2( 500, 0 ), Vector2( 500, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Actors/ZororiSprite/ZororiDrag2D:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D/IshishiDrag:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1.83333, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667, 3, 3.08333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D/NoshishiDrag:frame")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 1.83333, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667, 3, 3.08333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Actors/InoshishiSprite/Ishishi:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 1.83333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Actors/InoshishiSprite/Noshishi:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 1.83333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Actors/ZororiSprite/Zorori:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 1.83333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D/NoshishiDrag:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1.46409, 1 ),
+"update": 0,
+"values": [ Vector2( -500, 0 ), Vector2( -500, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D/IshishiDrag:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1.46409, 1 ),
+"update": 0,
+"values": [ Vector2( -500, 0 ), Vector2( -500, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Actors/InoshishiSprite:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 2.33333, 3 ),
+"transitions": PoolRealArray( 1, 0.297302, 1 ),
+"update": 0,
+"values": [ Vector2( -150, 0 ), Vector2( -150, 0 ), Vector2( -950, 0 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Actors/ZororiSprite:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 2.33333, 3 ),
+"transitions": PoolRealArray( 1, 0.297302, 1 ),
+"update": 0,
+"values": [ Vector2( 150, 0 ), Vector2( 150, 0 ), Vector2( 950, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
@@ -532,8 +839,104 @@ tracks/31/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/32/type = "value"
+tracks/32/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D/IshishiDrag:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D/NoshishiDrag:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("Actors/InoshishiSprite/Ishishi:visible")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Actors/InoshishiSprite/Noshishi:visible")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Actors/ZororiSprite/Zorori:visible")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Actors/ZororiSprite/ZororiDrag2D:visible")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.357143
 step = 0.0714286
 tracks/0/type = "value"
@@ -549,7 +952,7 @@ tracks/0/keys = {
 "values": [ 2, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 step = 0.0625
 tracks/0/type = "value"
 tracks/0/path = NodePath("Actors/InoshishiSprite/Inoshishi:frame")
@@ -588,7 +991,7 @@ tracks/2/keys = {
 "values": [ 9, 10, 11, 12, 11, 10, 9, 10, 11, 12, 11, 10, 9, 10, 11, 12, 0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.214286
 step = 0.0714286
 tracks/0/type = "value"
@@ -628,7 +1031,7 @@ tracks/2/keys = {
 "values": [ 8, 7, 6 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 4.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera2D:position:y")
@@ -641,8 +1044,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 )
 }
 
-[sub_resource type="Animation" id=25]
-resource_name = "ishishi_hai"
+[sub_resource type="Animation" id=11]
 length = 0.357143
 step = 0.0714286
 tracks/0/type = "value"
@@ -658,7 +1060,7 @@ tracks/0/keys = {
 "values": [ 2, 4, 5, 0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 0.5
 step = 0.125
 tracks/0/type = "value"
@@ -674,7 +1076,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 110 ), Vector2( 0, 105 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 8.0
 step = 0.0833333
 tracks/0/type = "value"
@@ -990,8 +1392,7 @@ tracks/25/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=26]
-resource_name = "noshishi_hai"
+[sub_resource type="Animation" id=14]
 length = 0.357143
 step = 0.0714286
 tracks/0/type = "value"
@@ -1007,7 +1408,7 @@ tracks/0/keys = {
 "values": [ 2, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 length = 2.5
 step = 0.125
 tracks/0/type = "value"
@@ -1083,7 +1484,7 @@ tracks/5/keys = {
 "values": [ 5, 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=16]
 length = 2.0
 step = 0.125
 tracks/0/type = "value"
@@ -1111,7 +1512,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=17]
 length = 0.214286
 step = 0.0714286
 tracks/0/type = "value"
@@ -1139,7 +1540,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=18]
 length = 1.5
 step = 0.125
 tracks/0/type = "value"
@@ -1191,22 +1592,22 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=19]
 size = 90
 outline_size = 3
 use_filter = true
 font_data = ExtResource( 57 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=20]
 size = 30
 outline_size = 3
 use_filter = true
 font_data = ExtResource( 57 )
 
-[sub_resource type="CanvasItemMaterial" id=18]
+[sub_resource type="CanvasItemMaterial" id=21]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="SpriteFrames" id=22]
 animations = [ {
 "frames": [ ExtResource( 29 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 24 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 38 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 33 ) ],
 "loop": true,
@@ -1214,28 +1615,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Shader" id=20]
-code = "shader_type canvas_item;
-
-uniform vec4 color: hint_color;
-uniform sampler2D mask: hint_albedo;
-uniform float scale = 2.0;
-const float pivot = 0.5;
-
-void fragment() {
-    vec2 ps = SCREEN_PIXEL_SIZE;
-    vec2 ratio = (ps.x > ps.y) ? vec2(ps.y / ps.x, 1) : vec2(1, ps.x / ps.y);
-    float a = 1.0 - texture(mask, (UV - pivot) * scale * ratio + pivot).a;
-    COLOR.a = (a < 0.5) ? 0.0 : color.a;
-    COLOR.rgb = color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=21]
-shader = SubResource( 20 )
-shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/scale = 2.0
-
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 18 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 15 ) ],
 "loop": false,
@@ -1243,7 +1623,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=23]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 19 ) ],
 "loop": true,
@@ -1251,7 +1631,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
 "frames": [ ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
@@ -1262,27 +1642,26 @@ animations = [ {
 [node name="DisplayHandler" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.63
 anims/audience_laugh = SubResource( 1 )
 anims/audience_laugh_fail = SubResource( 2 )
 anims/audience_pulse = SubResource( 3 )
 anims/bgcontrol_pulse = SubResource( 4 )
-anims/init = SubResource( 5 )
-anims/inoshishi_hai = SubResource( 6 )
-anims/inoshishi_panic = SubResource( 7 )
-anims/inoshishi_pulse = SubResource( 8 )
-anims/intro = SubResource( 9 )
-anims/ishishi_hai = SubResource( 25 )
-anims/mini_zorori_pulse = SubResource( 10 )
-anims/next_stage = SubResource( 11 )
-anims/noshishi_hai = SubResource( 26 )
-anims/zorori_fail = SubResource( 12 )
-anims/zorori_gag = SubResource( 13 )
-anims/zorori_pulse = SubResource( 14 )
-anims/zorori_unfrozen = SubResource( 15 )
+anims/game_over = SubResource( 5 )
+anims/init = SubResource( 6 )
+anims/inoshishi_hai = SubResource( 7 )
+anims/inoshishi_panic = SubResource( 8 )
+anims/inoshishi_pulse = SubResource( 9 )
+anims/intro = SubResource( 10 )
+anims/ishishi_hai = SubResource( 11 )
+anims/mini_zorori_pulse = SubResource( 12 )
+anims/next_stage = SubResource( 13 )
+anims/noshishi_hai = SubResource( 14 )
+anims/zorori_fail = SubResource( 15 )
+anims/zorori_gag = SubResource( 16 )
+anims/zorori_pulse = SubResource( 17 )
+anims/zorori_unfrozen = SubResource( 18 )
 
 [node name="Doors" type="Node2D" parent="."]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -58.0692 )
 scale = Vector2( 0.82, 0.82 )
 
@@ -1407,7 +1786,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.8, 1 )
 rect_pivot_offset = Vector2( 236, 0 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.129412, 0.0980392, 0.0627451, 1 )
 text = "SPEED UP!"
 align = 1
@@ -1427,7 +1806,7 @@ margin_right = 57.0
 margin_bottom = 66.634
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0.129412, 0.0980392, 0.0627451, 1 )
 text = "98 BPM"
 align = 1
@@ -1450,27 +1829,25 @@ offset = Vector2( 0, -151 )
 flip_h = true
 
 [node name="Floor" type="Sprite" parent="."]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, 193.532 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 43 )
 
 [node name="Walls" type="Sprite" parent="."]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -114.862 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 42 )
 
 [node name="Spotlight1" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.156863 )
-material = SubResource( 18 )
+self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 21 )
 position = Vector2( 80, -212 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 52 )
 
 [node name="Spotlight2" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.156863 )
-material = SubResource( 18 )
+self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 21 )
 position = Vector2( -80, -212 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 52 )
@@ -1482,62 +1859,108 @@ scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 44 )
 
 [node name="Actors" type="Node2D" parent="."]
+material = ExtResource( 2 )
 position = Vector2( 0, 134.007 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="InoshishiSprite" type="Node2D" parent="Actors"]
-position = Vector2( -150, 0 )
+use_parent_material = true
+position = Vector2( -950, 0 )
 
 [node name="Shadow" type="Sprite" parent="Actors/InoshishiSprite"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.215686 )
 scale = Vector2( 1.825, 1.364 )
 texture = ExtResource( 51 )
+
+[node name="IshishiDrag2D" type="Node2D" parent="Actors/InoshishiSprite"]
+visible = false
+use_parent_material = true
+position = Vector2( -250, -110 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="IshishiDrag" type="Sprite" parent="Actors/InoshishiSprite/IshishiDrag2D"]
+use_parent_material = true
+texture = ExtResource( 62 )
+vframes = 7
+frame = 6
+
+[node name="NoshishiDrag2D" type="Node2D" parent="Actors/InoshishiSprite"]
+visible = false
+use_parent_material = true
+position = Vector2( -345, -105 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="NoshishiDrag" type="Sprite" parent="Actors/InoshishiSprite/NoshishiDrag2D"]
+use_parent_material = true
+texture = ExtResource( 62 )
+vframes = 7
+frame = 3
 
 [node name="Inoshishi" type="AnimatedSprite" parent="Actors/InoshishiSprite"]
 visible = false
 material = ExtResource( 2 )
-frames = SubResource( 19 )
+frames = SubResource( 22 )
 frame = 6
 offset = Vector2( 0, -110 )
 
 [node name="Ishishi" type="Sprite" parent="Actors/InoshishiSprite"]
-material = ExtResource( 2 )
+visible = false
+use_parent_material = true
 position = Vector2( 48, -115.5 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 58 )
 hframes = 5
 vframes = 3
 
 [node name="Noshishi" type="Sprite" parent="Actors/InoshishiSprite"]
-material = ExtResource( 2 )
+visible = false
+use_parent_material = true
 position = Vector2( -47, -108.5 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 59 )
 hframes = 5
 vframes = 3
 
 [node name="ZororiSprite" type="Node2D" parent="Actors"]
-material = SubResource( 21 )
-position = Vector2( 150, 0 )
+use_parent_material = true
+position = Vector2( 950, 0 )
 
 [node name="Shadow" type="Sprite" parent="Actors/ZororiSprite"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.215686 )
 scale = Vector2( 1.825, 1.364 )
 texture = ExtResource( 51 )
 
+[node name="ZororiDrag2D" type="Node2D" parent="Actors/ZororiSprite"]
+visible = false
+use_parent_material = true
+position = Vector2( 220, -204 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ZororiDrag" type="Sprite" parent="Actors/ZororiSprite/ZororiDrag2D"]
+use_parent_material = true
+texture = ExtResource( 61 )
+vframes = 4
+frame = 3
+
 [node name="Zorori" type="AnimatedSprite" parent="Actors/ZororiSprite"]
-material = ExtResource( 2 )
-frames = SubResource( 22 )
+visible = false
+use_parent_material = true
+frames = SubResource( 23 )
 frame = 12
 offset = Vector2( 40, -210 )
 
 [node name="Ice" type="AnimatedSprite" parent="Actors/ZororiSprite"]
 visible = false
-frames = SubResource( 23 )
+frames = SubResource( 24 )
 offset = Vector2( 40, -210 )
 
 [node name="Pot" type="Sprite" parent="Actors/ZororiSprite"]
 visible = false
+use_parent_material = true
 position = Vector2( 58, -620 )
 texture = ExtResource( 56 )
 hframes = 6
@@ -1550,7 +1973,6 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.1
 
 [node name="Curtain_Top" type="Sprite" parent="CurtainsLayer1"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -240.931 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 40 )
@@ -1562,13 +1984,11 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.25
 
 [node name="Curtain_Side" type="Sprite" parent="CurtainsLayer2"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( -522.662, -110.386 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 41 )
 
 [node name="Curtain_Side2" type="Sprite" parent="CurtainsLayer2"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 522.662, -110.386 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 41 )
@@ -1581,7 +2001,6 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.35
 
 [node name="Chairs" type="Sprite" parent="AudienceLayer"]
-modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
 position = Vector2( 0, 285.904 )
 scale = Vector2( 0.779, 0.779 )
 texture = ExtResource( 45 )
@@ -1590,7 +2009,7 @@ texture = ExtResource( 45 )
 show_behind_parent = true
 position = Vector2( 0, -67 )
 scale = Vector2( 0.54, 0.54 )
-frames = SubResource( 24 )
+frames = SubResource( 25 )
 
 [node name="GradientLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true

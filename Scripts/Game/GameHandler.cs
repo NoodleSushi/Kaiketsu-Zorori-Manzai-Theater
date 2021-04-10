@@ -13,6 +13,7 @@ namespace Game
         [Export] public NodePath BgmPlayerPath;
         [Export] public NodePath GagPlayerPath;
         [Export] public NodePath PlrPlayerPath;
+        [Export] public NodePath AplPlayerPath;
         [Export] public NodePath GameAnimationTreePath;
         [Export] public NodePath DebugLabelPath;
         [Export] public NodePath ScoreLabelPath;
@@ -22,6 +23,7 @@ namespace Game
         private AudioPlayer.Bgm BgmPlayer;
         private AudioPlayer.Gag GagPlayer;
         private AudioPlayer.Plr PlrPlayer;
+        private AudioPlayer.Apl AplPlayer;
         private GameAnimationTree gameAnimationTree;
         private Label DebugLabel;
         private ScoreLabelClass ScoreLabel;
@@ -79,6 +81,11 @@ namespace Game
             GagPlayer.AllocatedTime = 0;
             GagPlayer.TakeOverWhilePlaying = true;
             GagPlayer.CurrentAudioPlayer.Bus = "Zorori";
+
+            AplPlayer = GetNode<AudioPlayer.Apl>(AplPlayerPath);
+            AplPlayer.MusicPlayer = BgmPlayer;
+            AplPlayer.AllocatedTime = 0;
+            AplPlayer.TakeOverWhilePlaying = true;
 
             PlrPlayer = GetNode<AudioPlayer.Plr>(PlrPlayerPath);
 
@@ -170,10 +177,12 @@ namespace Game
         private void GameOver()
         {
             GagPlayer.ClearPlaybackMarkerQueue();
+            AplPlayer.ClearPlaybackMarkerQueue();
             PlrPlayer.Stop();
             BgmPlayer.Stop();
             gameAnimationTree.ClearAll();
             ConfigHandler.SaveScore(BestScore);
+            gameAnimationTree.PlayOneShot("game_over");
             EmitSignal(nameof(GameOvered));
         }
 
@@ -197,6 +206,7 @@ namespace Game
             BPMLabel.Text = $"{CurrentBPM} BPM";
             BgmPlayer.PlayBGMStage(GagSystem.StageBGMIndex);
             GagPlayer.ClearPlaybackMarkerQueue();
+            AplPlayer.ClearPlaybackMarkerQueue();
             gameAnimationTree.GenerateBeginningOneShots(MAIN_BPM, isFirstStage);
             sbyte stageBars = GagSystem.StageBGMBars;
             for (sbyte bar = 0; bar < stageBars; bar++)
@@ -206,10 +216,12 @@ namespace Game
                 if (GagSystem.IsPointer2Out())
                 {
                     GagPlayer.AddPlaybackMarker(Beat2Time(bar, 9 + 5.0 / 24.0) - 0.05, true);
+                    AplPlayer.AddPlaybackMarker(Beat2Time(bar, 11), true);
                     gameAnimationTree.QueueOneShot("zorori_fail", Beat2Time(bar, 8));
                 }
                 else
                 {
+                    AplPlayer.AddPlaybackMarker(Beat2Time(bar, 11), false);
                     gameAnimationTree.QueueOneShot("zorori_gag", Beat2Time(bar, 8));
                 }
             }

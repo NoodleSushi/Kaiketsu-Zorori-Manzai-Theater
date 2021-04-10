@@ -28,15 +28,12 @@ namespace Rhythmer
         {
             if (MusicPlayer is null || !MusicPlayer.Playing) return;
             double ASPTime = RS.GetASPTimeSec(MusicPlayer) / MusicPlayer.PitchScale;
-            // GD.Print(ASPTime);
             while (CallbackQueue.Count > 0)
             {
                 CallbackStruct callback = CallbackQueue.Peek();
                 double playbackOffset = RS.GetPlaybackOffset(ASPTime, callback.Duration, 1, 1, 0);
-                //double playbackOffset = ASPTime - callback.Duration;
                 if (playbackOffset < 0)
                     return;
-                // callback.@Object.GetType().GetMethod(callback.Callback).Invoke(callback.@Object, callback.Params);
                 callback.@Object.Call(callback.Callback, callback.Params);
                 
                 CallbackQueue.Dequeue();

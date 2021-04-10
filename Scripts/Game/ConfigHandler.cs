@@ -5,24 +5,24 @@ namespace Game
 {
     public static class ConfigHandler
     {
-        const string SaveDirectory = "user://save.cfg";
-        const string SectionMain = "main";
-        const string KeyScore = "score";
+        const string SAVE_DIRECTORY = "user://save.cfg";
+        const string SECTION_MAIN = "main";
+        const string KEY_SCORE = "score";
         private static int BestScore = 0;
 
         public static void SaveScore(int Score)
         {
             ConfigFile Config = new ConfigFile();
-            Error Err = Config.Load(SaveDirectory);
+            Error Err = Config.Load(SAVE_DIRECTORY);
             BestScore = Math.Max(Score, BestScore);
-            Config.SetValue(SectionMain, KeyScore, BestScore);
-            Config.Save(SaveDirectory);
+            Config.SetValue(SECTION_MAIN, KEY_SCORE, BestScore);
+            Config.Save(SAVE_DIRECTORY);
         }
 
         public static int GetScore()
         {
             ConfigFile Config = new ConfigFile();
-            Error Err = Config.Load(SaveDirectory);
+            Error Err = Config.Load(SAVE_DIRECTORY);
 
             if (Err != Error.Ok)
             {
@@ -30,7 +30,7 @@ namespace Game
                 return BestScore;
             }
 
-            BestScore = Math.Max((int)Config.GetValue(SectionMain, KeyScore, 0), BestScore);
+            BestScore = Math.Max((int)Config.GetValue(SECTION_MAIN, KEY_SCORE, 0), BestScore);
             return BestScore;
         }
     }

@@ -20,9 +20,6 @@ namespace Rhythmer
 
                 if (playbackOffset < 0) return;
 
-                /*CurrentAudioPlayer.Stream = mission.Stream;
-                CurrentAudioPlayer.Play((float)playbackOffset);
-                SwitchAudioPlayer();*/
                 PlaybackQueue.Dequeue();
             }
         }

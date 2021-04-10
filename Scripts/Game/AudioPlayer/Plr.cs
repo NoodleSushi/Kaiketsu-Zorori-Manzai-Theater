@@ -5,8 +5,8 @@ namespace Game.AudioPlayer
 {
     public class Plr : AudioStreamPlayer
     {
-        private static readonly AudioStreamSample PLR_HAI = GD.Load<AudioStreamSample>("res://Audio/Hai! voice.wav");
-        private static readonly AudioStreamSample PLR_GETOVERIT = GD.Load<AudioStreamSample>("res://Audio/What's wrong with you!.wav");
+        [Export] private readonly AudioStream PLR_HAI;
+        [Export] private readonly AudioStream PLR_GETOVERIT;
 
         public void Play(bool isFail = false)
         {
