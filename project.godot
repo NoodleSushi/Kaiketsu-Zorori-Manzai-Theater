@@ -28,6 +28,10 @@ config/icon="res://icon.png"
 
 output_latency.web=25
 
+[autoload]
+
+SceneTransition="*res://Instances/SceneTransition.tscn"
+
 [display]
 
 window/vsync/use_vsync=false

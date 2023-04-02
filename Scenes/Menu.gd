@@ -8,12 +8,7 @@ func _ready() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_SnootButton_pressed() -> void:
-	scene_switch = "res://Scenes/EasterEgg.tscn"
-	$CanvasLayer2/AnimationPlayer.play("Exit")
+	SceneTransition.transition_to_scene("res://Scenes/EasterEgg.tscn")
 
 func _on_PlayButton_pressed() -> void:
-	scene_switch = "res://Scenes/Game.tscn"
-	$CanvasLayer2/AnimationPlayer.play("Exit")
-
-func switch_to_scene() -> void:
-	get_tree().change_scene(scene_switch)
+	SceneTransition.transition_to_scene("res://Scenes/Game.tscn")

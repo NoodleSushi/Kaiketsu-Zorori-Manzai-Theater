@@ -106,9 +106,9 @@ namespace Game
 //                GenerateNPlayBGMStage();
 //            }
             if (Input.IsActionJustPressed("restart") && IsGameOver)
-                  GetTree().ReloadCurrentScene();
+                GetNode<CanvasLayer>("/root/SceneTransition").Call("reload_current_scene");
             if (Input.IsActionJustPressed("ui_cancel") && IsGameOver)
-                  GetTree().ChangeScene("res://Scenes/Menu.tscn");
+                GetNode<CanvasLayer>("/root/SceneTransition").Call("transition_to_scene", "res://Scenes/Menu.tscn");
             if (!isActive)
                 return;
 
