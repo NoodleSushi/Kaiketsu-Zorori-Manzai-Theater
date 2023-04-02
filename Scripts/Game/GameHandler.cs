@@ -1,5 +1,7 @@
 using Godot;
 using Rhythmer;
+using AnimKey = Game.GameAnimationTree.AnimKey;
+using AnimState = Game.GameAnimationTree.AnimState;
 
 namespace Game
 {
@@ -10,49 +12,39 @@ namespace Game
         [Signal] public delegate void BGMStageGenerated();
         [Signal] public delegate void GameOvered();
 
-        [Export] public NodePath BgmPlayerPath;
-        [Export] public NodePath GagPlayerPath;
-        [Export] public NodePath PlrPlayerPath;
-        [Export] public NodePath AplPlayerPath;
-        [Export] public NodePath GameAnimationTreePath;
-        [Export] public NodePath DebugLabelPath;
-        [Export] public NodePath ScoreLabelPath;
-        [Export] public NodePath BestScoreLabelPath;
-        [Export] public NodePath BPMLabelPath;
+        [Export] public NodePath BgmAudioPlayerPath; private AudioPlayer.Bgm BgmAudioPlayer;
+        [Export] public NodePath GagAudioPlayerPath; private AudioPlayer.Gag GagAudioPlayer;
+        [Export] public NodePath PlrAudioPlayerPath; private AudioPlayer.Plr PlrAudioPlayer;
+        [Export] public NodePath AplAudioPlayerPath; private AudioPlayer.Apl AplAudioPlayer;
+        [Export] public NodePath GameOverAudioPlayerPath; private AudioStreamPlayer GameOverAudioPlayer;
+        [Export] public NodePath GameAnimationTreePath; private GameAnimationTree @GameAnimationTree;
+        [Export] public NodePath DebugLabelPath; private Label DebugLabel;
+        [Export] public NodePath ScoreLabelPath; private ScoreLabelClass ScoreLabel;
+        [Export] public NodePath BestScoreLabelPath; private BestScoreLabelClass BestScoreLabel;
+        [Export] public NodePath BPMLabelPath; private Label BPMLabel;
+        [Export] public NodePath GameOverScreenPath; private Control GameOverScreen;
         [Export] public bool isActive = true;
-        private AudioPlayer.Bgm BgmPlayer;
-        private AudioPlayer.Gag GagPlayer;
-        private AudioPlayer.Plr PlrPlayer;
-        private AudioPlayer.Apl AplPlayer;
-        private GameAnimationTree gameAnimationTree;
-        private Label DebugLabel;
-        private ScoreLabelClass ScoreLabel;
-        private BestScoreLabelClass BestScoreLabel;
-        private Label BPMLabel;
 
         readonly private GagSystemClass GagSystem = new GagSystemClass();
         readonly private PoolTimingAnalyzerClass PoolTimingAnalyzer = new PoolTimingAnalyzerClass();
 
+        private bool IsGameOver = false;
         private float CurrentBPM = MAIN_BPM;
         private int CurrentStage = 0;
-        private int score = 0;
-        private int bestScore = 0;
-
-        private int Safes = 0;
-
-        private int Score
+        private int SafeHaiAttempts = 0;
+        private int currentScore = 0; private int CurrentScore
         {
             set
             {
-                score = value;
-                if (score > BestScore)
-                    BestScore = score;
+                currentScore = value;
+                if (currentScore > BestScore)
+                    BestScore = currentScore;
                 if (ScoreLabel != null)
                     ScoreLabel.Score = value;
             }
-            get => score;
+            get => currentScore;
         }
-        private int BestScore
+        private int bestScore = 0; private int BestScore
         {
             set
             {
@@ -65,91 +57,89 @@ namespace Game
 
         public override void _Ready()
         {
-            GetParent<Node>().Connect("ready", this, nameof(_on_Parent_Ready));
-        }
+            BgmAudioPlayer = GetNode<AudioPlayer.Bgm>(BgmAudioPlayerPath);
+            BgmAudioPlayer.BPM = MAIN_BPM;
+            BgmAudioPlayer.Connect("finished", this, nameof(_on_BgmPlayer_finished));
 
-        public void _on_Parent_Ready()
-        {
-            if (!isActive)
-                return;
-            BgmPlayer = GetNode<AudioPlayer.Bgm>(BgmPlayerPath);
-            BgmPlayer.BPM = MAIN_BPM;
-            BgmPlayer.Connect("finished", this, nameof(_on_BgmPlayer_finished));
+            GagAudioPlayer = GetNode<AudioPlayer.Gag>(GagAudioPlayerPath);
+            GagAudioPlayer.MusicPlayer = BgmAudioPlayer;
+            GagAudioPlayer.AllocatedTime = 0;
+            GagAudioPlayer.TakeOverWhilePlaying = true;
 
-            GagPlayer = GetNode<AudioPlayer.Gag>(GagPlayerPath);
-            GagPlayer.MusicPlayer = BgmPlayer;
-            GagPlayer.AllocatedTime = 0;
-            GagPlayer.TakeOverWhilePlaying = true;
-            GagPlayer.CurrentAudioPlayer.Bus = "Zorori";
+            AplAudioPlayer = GetNode<AudioPlayer.Apl>(AplAudioPlayerPath);
+            AplAudioPlayer.MusicPlayer = BgmAudioPlayer;
+            AplAudioPlayer.AllocatedTime = 0;
+            AplAudioPlayer.TakeOverWhilePlaying = true;
 
-            AplPlayer = GetNode<AudioPlayer.Apl>(AplPlayerPath);
-            AplPlayer.MusicPlayer = BgmPlayer;
-            AplPlayer.AllocatedTime = 0;
-            AplPlayer.TakeOverWhilePlaying = true;
+            PlrAudioPlayer = GetNode<AudioPlayer.Plr>(PlrAudioPlayerPath);
+            
+            GameOverAudioPlayer = GetNode<AudioStreamPlayer>(GameOverAudioPlayerPath);
 
-            PlrPlayer = GetNode<AudioPlayer.Plr>(PlrPlayerPath);
-
-            gameAnimationTree = GetNode<GameAnimationTree>(GameAnimationTreePath);
-            gameAnimationTree.SetBgmPlayer(BgmPlayer);
-
+            @GameAnimationTree = GetNode<GameAnimationTree>(GameAnimationTreePath);
+            @GameAnimationTree.SetBgmPlayer(BgmAudioPlayer);
+            @GameAnimationTree.Active = true;
+            @GameAnimationTree.PlayIntro();
+            @GameAnimationTree.Connect(nameof(@GameAnimationTree.AnimStateChanged), this, nameof(_on_GameAnimationTree_AnimStateChanged));
 
             DebugLabel = GetNode<Label>(DebugLabelPath);
+
             ScoreLabel = GetNode<ScoreLabelClass>(ScoreLabelPath);
             
             BestScoreLabel = GetNode<BestScoreLabelClass>(BestScoreLabelPath);
             BestScore = ConfigHandler.GetScore();
+
             BPMLabel = GetNode<Label>(BPMLabelPath);
 
-            isActive = false;
-            //GenerateNPlayBGMStage();
+            GameOverScreen = GetNode<Control>(GameOverScreenPath);
+
+            GagSystem.Reset();
         }
 
         public override void _Process(float delta)
         {
-            if (Input.IsActionJustPressed("ui_cancel"))
-            {
-                isActive = true;
-                Reset();
-                GenerateNPlayBGMStage();
-            }
-
+//            if (Input.IsActionJustPressed("ui_cancel") && !isActive)
+//            {
+//                isActive = true;
+//                Reset();
+//                GenerateNPlayBGMStage();
+//            }
+            if (Input.IsActionJustPressed("restart") && IsGameOver)
+                  GetTree().ReloadCurrentScene();
+            if (Input.IsActionJustPressed("ui_cancel") && IsGameOver)
+                  GetTree().ChangeScene("res://Scenes/Menu.tscn");
             if (!isActive)
                 return;
 
-            float inputBeat = (float)RS.GetASPBeatScaled(MAIN_BPM, BgmPlayer);
-            bool isButtonPressed = Input.IsActionJustPressed("ui_accept") && inputBeat > 8;
-            bool isFail = GagSystem.IsBeat2Out(inputBeat);
+            float inputBeat = (float) RS.GetASPBeatScaled(MAIN_BPM, BgmAudioPlayer);
+            bool isButtonPressed = (Input.IsActionJustPressed("ui_accept") && inputBeat > 8);
+            bool isFail = GagSystem.Beat2IsFailureGag(inputBeat);
             bool isSafe;
             bool isPoint = false;
 
             if (isButtonPressed)
-                isPoint = PoolTimingAnalyzer.AppendInput(inputBeat);
+                isPoint = PoolTimingAnalyzer.AppendInputTime(inputBeat);
 
             isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat);
 
             if (isButtonPressed && isSafe)
             {
                 if (isPoint)
-                    Score += 1;
+                    CurrentScore += 1;
 
-                PlrPlayer.Play(isFail);
+                PlrAudioPlayer.Play(isFail);
 
-                if (isFail)
-                {
-                    gameAnimationTree.PlayOneShot("inoshishi_panic");
-                    gameAnimationTree.PlayOneShot("zorori_unfrozen");
-                    gameAnimationTree.PlayOneShot("audience_laugh_fail");
-                }
+                if (isFail) 
+                    @GameAnimationTree.PlayFail();
                 else
                 {
-                    gameAnimationTree.PlayOneShot(Safes % 2 == 0 ? "noshishi_hai" : "ishishi_hai");
-                    gameAnimationTree.PlayOneShot("zorori_pulse");
-                    gameAnimationTree.PlayOneShot("audience_laugh");
-                    Safes++;
+                    @GameAnimationTree.PlaySafe((SafeHaiAttempts & 0x1) == 0);
+                    SafeHaiAttempts++;
                 }
             }
 
-            DebugLabel.Text = $"{PoolTimingAnalyzer}\n{isSafe}";
+            #if DEBUG
+                DebugLabel.Text = $"{PoolTimingAnalyzer}\n{isSafe}";
+            #endif
 
             if (!isSafe)
             {
@@ -163,10 +153,10 @@ namespace Game
         {
             CurrentBPM = newBPM;
             float newPitchScale = newBPM / MAIN_BPM;
-            BgmPlayer.PitchScale = newPitchScale;
-            GagPlayer.CurrentAudioPlayer.PitchScale = newPitchScale;
-            PlrPlayer.PitchScale = newPitchScale;
-            gameAnimationTree.SetTimeScale(newBPM / 60);
+            BgmAudioPlayer.PitchScale = newPitchScale;
+            GagAudioPlayer.CurrentAudioPlayer.PitchScale = newPitchScale;
+            PlrAudioPlayer.PitchScale = newPitchScale;
+            @GameAnimationTree.SetTimeScale(newBPM / 60);
         }
 
         private static float Beat2Time(sbyte bar, double beat)
@@ -176,62 +166,64 @@ namespace Game
 
         private void GameOver()
         {
-            GagPlayer.ClearPlaybackMarkerQueue();
-            AplPlayer.ClearPlaybackMarkerQueue();
-            PlrPlayer.Stop();
-            BgmPlayer.Stop();
-            gameAnimationTree.ClearAll();
+            GagAudioPlayer.ClearPlaybackMarkerQueue();
+            GagAudioPlayer.Stop();
+            AplAudioPlayer.ClearPlaybackMarkerQueue();
+            PlrAudioPlayer.Stop();
+            BgmAudioPlayer.Stop();
+            @GameAnimationTree.ClearAll();
             ConfigHandler.SaveScore(BestScore);
-            gameAnimationTree.PlayOneShot("game_over");
+            @GameAnimationTree.PlayGameOver();
             EmitSignal(nameof(GameOvered));
         }
 
         private void Reset()
         {
-            Score = 0;
+            CurrentScore = 0;
             CurrentStage = 0;
             GagSystem.Reset();
             PoolTimingAnalyzer.Reset();
+            @GameAnimationTree.Reset();
             SetCurrentBPM(MAIN_BPM);
         }
 
         private void GenerateNPlayBGMStage()
         {
-            Safes = 0;
-            bool isFirstStage = CurrentStage == 0;
+            SafeHaiAttempts = 0;
+            bool isFirstStage = (CurrentStage == 0);
             if (!isFirstStage)
-                GagSystem.GotoNextStage();
+                GagSystem.TurnToNextPage();
 
             SetCurrentBPM(MAIN_BPM + CurrentStage * 3);
             BPMLabel.Text = $"{CurrentBPM} BPM";
-            BgmPlayer.PlayBGMStage(GagSystem.StageBGMIndex);
-            GagPlayer.ClearPlaybackMarkerQueue();
-            AplPlayer.ClearPlaybackMarkerQueue();
-            gameAnimationTree.GenerateBeginningOneShots(MAIN_BPM, isFirstStage);
-            sbyte stageBars = GagSystem.StageBGMBars;
+            BgmAudioPlayer.PlayBGMStage(GagSystem.PageIndex);
+            GagAudioPlayer.ClearPlaybackMarkerQueue();
+            AplAudioPlayer.ClearPlaybackMarkerQueue();
+            @GameAnimationTree.GenerateBeginningOneShots(MAIN_BPM, isFirstStage);
+            sbyte stageBars = GagSystem.StageBGMBarCount;
             for (sbyte bar = 0; bar < stageBars; bar++)
             {
-                GagSystem.SystemPointer = bar;
-                GagPlayer.AddPlaybackMarker(Beat2Time(bar, 7));
-                if (GagSystem.IsPointer2Out())
+                GagAudioPlayer.AddPlaybackMarker(Beat2Time(bar, 7));
+                if (GagSystem.GagIndex2IsFailureGag(bar))
                 {
-                    GagPlayer.AddPlaybackMarker(Beat2Time(bar, 9 + 5.0 / 24.0) - 0.05, true);
-                    AplPlayer.AddPlaybackMarker(Beat2Time(bar, 11), true);
-                    gameAnimationTree.QueueOneShot("zorori_fail", Beat2Time(bar, 8));
+                    GagAudioPlayer.AddPlaybackMarker(Beat2Time(bar, 9 + 5.0 / 24.0) - 0.05, true);
+                    AplAudioPlayer.AddPlaybackMarker(Beat2Time(bar, 11), true);
+                    @GameAnimationTree.QueueOneShot(AnimKey.zorori_fail, Beat2Time(bar, 8));
                 }
                 else
                 {
-                    AplPlayer.AddPlaybackMarker(Beat2Time(bar, 11), false);
-                    gameAnimationTree.QueueOneShot("zorori_gag", Beat2Time(bar, 8));
+                    AplAudioPlayer.AddPlaybackMarker(Beat2Time(bar, 11), false);
+                    @GameAnimationTree.QueueOneShot(AnimKey.zorori_gag, Beat2Time(bar, 8));
                 }
+                @GameAnimationTree.QueueOneShot(AnimKey.inoshishi_pulse, Beat2Time(bar, 8));
+                @GameAnimationTree.QueueOneShot(AnimKey.inoshishi_pulse, Beat2Time(bar, 9));
+                @GameAnimationTree.QueueOneShot(AnimKey.inoshishi_pulse, Beat2Time(bar, 10));
             }
 
             if (!isFirstStage)
-                gameAnimationTree.PlayOneShot("next_stage");
-
-            // gameAnimationTree.PlayOneShots();
+                @GameAnimationTree.PlayOneShot(AnimKey.next_stage);
     
-            PoolTimingAnalyzer.Reset(GagSystem.GenerateMissionList(), GagSystem.GenerateIsPointList());
+            PoolTimingAnalyzer.Reset(GagSystem.GenerateMissionIsPointList());
 
             CurrentStage++;
             EmitSignal(nameof(BGMStageGenerated));
@@ -242,6 +234,23 @@ namespace Game
             if (!isActive)
                 return;
             GenerateNPlayBGMStage();
+        }
+
+        public void _on_GameAnimationTree_AnimStateChanged(AnimState oldAnimState, AnimState newAnimState)
+        {
+            if (oldAnimState == AnimState.Intro && newAnimState == AnimState.MainBlendTree)
+            {
+                isActive = true;
+                GenerateNPlayBGMStage();
+            }
+            
+            if (newAnimState == AnimState.GameOverState)
+            {
+                GD.Print("FUCK YEA BOI");
+                GameOverAudioPlayer.Play();
+                GameOverScreen.Visible = true;
+                IsGameOver = true;
+            }
         }
     }
 }

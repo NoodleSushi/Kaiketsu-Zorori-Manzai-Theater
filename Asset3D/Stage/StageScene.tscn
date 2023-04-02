@@ -1,0 +1,392 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Asset3D/Stage/Materials/StageBoard.tres" type="Material" id=1]
+[ext_resource path="res://Asset3D/Stage/Textures/Left Door.png" type="Texture" id=2]
+[ext_resource path="res://Asset3D/Stage/Meshes/StageOpt2.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Asset3D/Stage/Materials/StageLedge.material" type="Material" id=4]
+[ext_resource path="res://Asset3D/Stage/Materials/TexDoor.material" type="Material" id=5]
+[ext_resource path="res://Asset3D/Stage/Materials/TexMicrophone.material" type="Material" id=6]
+[ext_resource path="res://Asset3D/Stage/Materials/WallBG.material" type="Material" id=7]
+[ext_resource path="res://Asset3D/Stage/Materials/TexLightBoard.material" type="Material" id=8]
+[ext_resource path="res://Asset3D/Stage/Meshes/microphone.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://Asset3D/Stage/Meshes/Side Curtains.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://Asset3D/Stage/Meshes/Top Curtains.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://Asset3D/Stage/Materials/StageBase.material" type="Material" id=13]
+[ext_resource path="res://Asset3D/Stage/Materials/TexTopCurtains.tres" type="Material" id=14]
+[ext_resource path="res://Asset3D/Stage/Materials/TexSideCurtains.tres" type="Material" id=15]
+[ext_resource path="res://Asset3D/Stage/Materials/StageSide.material" type="Material" id=17]
+[ext_resource path="res://Asset3D/Stage/Materials/WallSides.material" type="Material" id=18]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Cube000"
+surfaces/0 = {
+"aabb": AABB( -3.69103, -0.002913, -1.44661, 7.38624, 3.46731, 4.34641 ),
+"array_data": PoolByteArray( 214, 57, 108, 192, 250, 223, 62, 187, 41, 150, 57, 64, 127, 0, 0, 0, 0, 127, 0, 127, 210, 70, 94, 202, 214, 57, 108, 192, 213, 120, 253, 63, 132, 42, 185, 191, 127, 0, 0, 0, 0, 127, 0, 127, 75, 74, 255, 55, 214, 57, 108, 192, 213, 120, 253, 63, 41, 150, 57, 64, 127, 0, 0, 0, 0, 127, 0, 127, 75, 74, 94, 202, 82, 126, 108, 64, 250, 223, 62, 187, 132, 42, 185, 191, 129, 0, 0, 0, 0, 129, 0, 127, 58, 76, 222, 74, 82, 126, 108, 64, 213, 120, 253, 63, 41, 150, 57, 64, 129, 0, 0, 0, 0, 129, 0, 127, 146, 73, 255, 55, 82, 126, 108, 64, 213, 120, 253, 63, 132, 42, 185, 191, 129, 0, 0, 0, 0, 129, 0, 127, 146, 73, 222, 74, 82, 126, 108, 64, 250, 223, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 222, 74, 99, 238, 150, 63, 43, 202, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 19, 70, 99, 238, 150, 63, 43, 202, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 19, 70, 99, 238, 150, 191, 8, 232, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 110, 188, 214, 57, 108, 192, 250, 223, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 96, 200, 214, 57, 108, 192, 250, 223, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 96, 200, 99, 238, 150, 63, 43, 202, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 19, 70, 99, 238, 150, 191, 8, 232, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 110, 188, 99, 238, 150, 191, 8, 232, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 110, 188, 82, 126, 108, 64, 213, 120, 253, 63, 132, 42, 185, 191, 129, 0, 0, 0, 0, 129, 0, 127, 146, 73, 222, 74, 82, 126, 108, 64, 187, 184, 93, 64, 41, 150, 57, 64, 129, 0, 0, 0, 0, 129, 0, 127, 210, 70, 0, 56, 82, 126, 108, 64, 187, 184, 93, 64, 132, 42, 185, 191, 129, 0, 0, 0, 0, 129, 0, 127, 210, 70, 222, 74, 214, 57, 108, 192, 187, 184, 93, 64, 132, 42, 185, 191, 127, 0, 0, 0, 0, 127, 0, 127, 58, 76, 255, 55, 214, 57, 108, 192, 187, 184, 93, 64, 41, 150, 57, 64, 127, 0, 0, 0, 0, 127, 0, 127, 58, 76, 94, 202, 214, 57, 108, 192, 250, 223, 62, 187, 132, 42, 185, 191, 127, 0, 0, 0, 0, 127, 0, 127, 210, 70, 255, 55, 82, 126, 108, 64, 250, 223, 62, 187, 41, 150, 57, 64, 129, 0, 0, 0, 0, 129, 0, 127, 58, 76, 255, 55, 82, 126, 108, 64, 250, 223, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 222, 74, 82, 126, 108, 64, 250, 223, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 222, 74, 99, 238, 150, 63, 43, 202, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 19, 70, 99, 238, 150, 191, 8, 232, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 110, 188, 99, 238, 150, 191, 8, 232, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 110, 188, 214, 57, 108, 192, 250, 223, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 96, 200, 99, 238, 150, 63, 43, 202, 62, 187, 41, 150, 57, 64, 0, 127, 0, 0, 0, 0, 129, 127, 244, 203, 19, 70, 99, 238, 150, 63, 43, 202, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 19, 70, 99, 238, 150, 191, 8, 232, 62, 187, 132, 42, 185, 191, 0, 127, 0, 0, 0, 0, 129, 127, 135, 194, 110, 188, 82, 126, 108, 64, 213, 120, 253, 63, 132, 42, 185, 191, 129, 0, 0, 0, 0, 129, 0, 127, 146, 73, 222, 74, 82, 126, 108, 64, 213, 120, 253, 63, 41, 150, 57, 64, 129, 0, 0, 0, 0, 129, 0, 127, 146, 73, 255, 55, 82, 126, 108, 64, 187, 184, 93, 64, 41, 150, 57, 64, 129, 0, 0, 0, 0, 129, 0, 127, 210, 70, 0, 56 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 2, 0, 19, 0, 18, 0, 0, 0, 1, 0, 20, 0, 3, 0, 4, 0, 21, 0, 22, 0, 24, 0, 23, 0, 25, 0, 27, 0, 26, 0, 28, 0, 30, 0, 29, 0, 31, 0, 33, 0, 32, 0, 2, 0, 18, 0, 1, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 42,
+"material": ExtResource( 18 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 34
+}
+surfaces/1 = {
+"aabb": AABB( -3.69103, -0.002913, -1.44661, 7.38624, 3.46732, 1.00136e-05 ),
+"array_data": PoolByteArray( 99, 238, 150, 63, 43, 202, 62, 187, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 177, 69, 123, 186, 82, 126, 108, 64, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 26, 199, 99, 238, 150, 63, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 123, 186, 214, 57, 108, 192, 250, 223, 62, 187, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 177, 69, 175, 73, 99, 238, 150, 191, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 22, 69, 214, 57, 108, 192, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 175, 73, 99, 238, 150, 191, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 22, 69, 99, 238, 150, 63, 229, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 123, 186, 99, 238, 150, 191, 187, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 22, 69, 214, 57, 108, 192, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 175, 73, 99, 238, 150, 191, 187, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 22, 69, 214, 57, 108, 192, 187, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 175, 73, 82, 126, 108, 64, 187, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 26, 199, 99, 238, 150, 63, 229, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 123, 186, 82, 126, 108, 64, 250, 223, 62, 187, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 177, 69, 26, 199, 99, 238, 150, 191, 8, 232, 62, 187, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 177, 69, 22, 69, 99, 238, 150, 191, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 22, 69, 99, 238, 150, 63, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 123, 186, 99, 238, 150, 63, 229, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 123, 186, 214, 57, 108, 192, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 175, 73, 99, 238, 150, 191, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 162, 59, 22, 69, 99, 238, 150, 191, 187, 184, 93, 64, 132, 42, 185, 191, 0, 0, 127, 0, 0, 129, 0, 127, 47, 193, 22, 69 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 2, 0, 13, 0, 12, 0, 0, 0, 1, 0, 14, 0, 3, 0, 4, 0, 15, 0, 16, 0, 18, 0, 17, 0, 19, 0, 21, 0, 20, 0, 2, 0, 12, 0, 1, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 30,
+"material": ExtResource( 7 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 22
+}
+
+[sub_resource type="ArrayMesh" id=2]
+surfaces/0 = {
+"aabb": AABB( -1.03958, 0, -0.5, 2.07917, 1e-05, 1.00001 ),
+"array_data": PoolByteArray( 245, 16, 133, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 245, 16, 133, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 245, 16, 133, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 245, 16, 133, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 8 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
+
+[sub_resource type="Shader" id=3]
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node1_in0_basecolor = node0_out0_color;
+	float node1_in1_subsurface = float(0.0);
+	vec3 node1_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node1_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node1_in4_metallic = float(0.0);
+	float node1_in5_specular = float(0.5);
+	float node1_in6_speculartint = float(0.0);
+	float node1_in7_roughness = float(0.5);
+	float node1_in8_anisotropic = float(0.0);
+	float node1_in9_anisotropicrotation = float(0.0);
+	float node1_in10_sheen = float(0.0);
+	float node1_in11_sheentint = float(0.5);
+	float node1_in12_clearcoat = float(0.0);
+	float node1_in13_clearcoatroughness = float(0.029999999329447746);
+	float node1_in14_ior = float(1.4500000476837158);
+	float node1_in15_transmission = float(0.0);
+	float node1_in16_transmissionroughness = float(0.0);
+	vec4 node1_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node1_in18_alpha = float(1.0);
+	vec3 node1_in19_normal = NORMAL;
+	vec3 node1_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node1_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node1_bsdf_out0_albedo;
+	float node1_bsdf_out1_sss_strength;
+	float node1_bsdf_out3_specular;
+	float node1_bsdf_out2_metallic;
+	float node1_bsdf_out4_roughness;
+	float node1_bsdf_out5_clearcoat;
+	float node1_bsdf_out6_clearcoat_gloss;
+	float node1_bsdf_out7_anisotropy;
+	float node1_bsdf_out8_transmission;
+	float node1_bsdf_out9_ior;
+	
+	node_bsdf_principled(node1_in0_basecolor, node1_in1_subsurface,
+		node1_in3_subsurfacecolor, node1_in4_metallic, node1_in5_specular,
+		node1_in7_roughness, node1_in12_clearcoat, node1_in13_clearcoatroughness,
+		node1_in8_anisotropic, node1_in15_transmission, node1_in14_ior,
+		node1_bsdf_out0_albedo, node1_bsdf_out1_sss_strength, node1_bsdf_out2_metallic,
+		node1_bsdf_out3_specular, node1_bsdf_out4_roughness, node1_bsdf_out5_clearcoat,
+		node1_bsdf_out6_clearcoat_gloss, node1_bsdf_out7_anisotropy,
+		node1_bsdf_out8_transmission, node1_bsdf_out9_ior);
+	
+	
+	ALBEDO = node1_bsdf_out0_albedo;
+	SSS_STRENGTH = node1_bsdf_out1_sss_strength;
+	SPECULAR = node1_bsdf_out3_specular;
+	METALLIC = node1_bsdf_out2_metallic;
+	ROUGHNESS = node1_bsdf_out4_roughness;
+	CLEARCOAT = node1_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node1_bsdf_out6_clearcoat_gloss;
+	NORMAL = node1_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node1_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node1_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node1_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/texture_0 = ExtResource( 2 )
+
+[sub_resource type="ArrayMesh" id=5]
+resource_name = "Cube002"
+lightmap_size_hint = Vector2( 0.899, 0 )
+surfaces/0 = {
+"aabb": AABB( -4.6803e-07, 0.800306, -1.44661, 1.17915, 1.17994, 1.00136e-05 ),
+"array_data": PoolByteArray( 36, 22, 237, 179, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 251, 59, 0, 60, 99, 238, 150, 63, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 132, 18, 0, 0, 142, 69, 251, 180, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 251, 59, 0, 0, 36, 22, 237, 179, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 251, 59, 0, 60, 99, 238, 150, 63, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 206, 147, 0, 60, 99, 238, 150, 63, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 129, 0, 0, 129, 132, 18, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": SubResource( 4 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 6
+}
+
+[sub_resource type="ArrayMesh" id=6]
+resource_name = "Cube004"
+surfaces/0 = {
+"aabb": AABB( -1.17915, 0.800306, -1.44661, 1.17915, 1.17994, 1.00136e-05 ),
+"array_data": PoolByteArray( 99, 238, 150, 191, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 127, 0, 0, 127, 164, 144, 0, 60, 142, 69, 251, 180, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 127, 0, 0, 127, 1, 60, 47, 19, 99, 238, 150, 191, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 127, 0, 0, 127, 248, 147, 0, 0, 99, 238, 150, 191, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 126, 0, 0, 127, 164, 144, 0, 60, 36, 22, 237, 179, 219, 224, 76, 63, 132, 42, 185, 191, 0, 0, 127, 0, 127, 0, 0, 127, 0, 60, 1, 60, 142, 69, 251, 180, 213, 120, 253, 63, 132, 42, 185, 191, 0, 0, 127, 0, 126, 0, 0, 127, 1, 60, 47, 19 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 5 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 6
+}
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 4, 0.5, 6 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1.8, 0.5, 5 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 1.8, 0.5, 3.7 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 1.8, 0.5, 1.3 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 2.5, 0.4, 1.4 )
+
+[sub_resource type="Environment" id=16]
+background_mode = 1
+dof_blur_far_quality = 0
+dof_blur_near_quality = 0
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.05
+adjustment_saturation = 1.2
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 1.4, 1.2, 0.4 )
+
+[node name="Stage" type="Spatial"]
+
+[node name="Walls" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="Walls2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, -1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 5.799 )
+mesh = SubResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="Stage" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 13 )
+material/1 = ExtResource( 17 )
+material/2 = ExtResource( 4 )
+material/3 = ExtResource( 1 )
+
+[node name="Light Board" type="MeshInstance" parent="Stage"]
+transform = Transform( 1.64286, 0, 0, 0, -8.19309e-08, -1.74676, 0, 1.87436, -7.63531e-08, 0.016175, 1.63398, -1.44205 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Doors" type="Spatial" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.006 )
+
+[node name="Door Right" type="MeshInstance" parent="Stage/Doors"]
+mesh = SubResource( 5 )
+material/0 = ExtResource( 5 )
+
+[node name="Door Left" type="MeshInstance" parent="Stage/Doors"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Microphone" type="MeshInstance" parent="Stage"]
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0.181936, 2.21405, -0.238289 )
+material_override = ExtResource( 6 )
+cast_shadow = 0
+mesh = ExtResource( 10 )
+material/0 = null
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Curtains" type="Spatial" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42784 )
+
+[node name="Side Curtains Left" type="MeshInstance" parent="Stage/Curtains"]
+transform = Transform( 0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, -1.97324, 1.89332, 1.12113 )
+mesh = ExtResource( 11 )
+material/0 = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Side Curtains Right" type="MeshInstance" parent="Stage/Curtains"]
+transform = Transform( -0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 1.973, 1.893, 1.121 )
+mesh = ExtResource( 11 )
+material/0 = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Top Curtains" type="MeshInstance" parent="Stage/Curtains"]
+transform = Transform( 0.836, 0, 0, 0, 0.836, 0, 0, 0, 0.836, 0, 2.26423, 0.572 )
+cast_shadow = 0
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Lights" type="Spatial" parent="."]
+
+[node name="Point" type="Spatial" parent="Lights"]
+
+[node name="Point001" type="OmniLight" parent="Lights/Point"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.766174, 2.47354, 0.69268 )
+light_energy = 0.4
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="Point002" type="OmniLight" parent="Lights/Point"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.766, 2.47354, 0.69268 )
+light_energy = 0.4
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="Point003" type="OmniLight" parent="Lights/Point"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.21658, 2.4167, 2.73657 )
+light_energy = 0.45
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 7.4
+
+[node name="Point004" type="OmniLight" parent="Lights/Point"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.217, 2.417, 2.737 )
+light_energy = 0.45
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 7.4
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="Floor" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4.581 )
+shape = SubResource( 10 )
+
+[node name="RWall" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.2, 1.8, 3.181 )
+shape = SubResource( 11 )
+
+[node name="LWall" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.2, 1.8, 3.181 )
+shape = SubResource( 11 )
+
+[node name="BWall" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 1.8, -1.9 )
+shape = SubResource( 12 )
+
+[node name="FWallL" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 2.5, 1.8, 7.7 )
+shape = SubResource( 13 )
+
+[node name="FWallR" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -2.5, 1.8, 7.7 )
+shape = SubResource( 13 )
+
+[node name="Stage" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.4 )
+shape = SubResource( 14 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 16 )
+
+[node name="DoorArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 7.9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DoorArea"]
+shape = SubResource( 17 )

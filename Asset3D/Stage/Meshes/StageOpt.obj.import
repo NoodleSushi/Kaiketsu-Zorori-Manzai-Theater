@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/StageOpt.obj-5187eb8d01474b075b10631cb8f2d0fd.mesh"
+
+[deps]
+
+files=[ "res://.import/StageOpt.obj-5187eb8d01474b075b10631cb8f2d0fd.mesh" ]
+
+source_file="res://Asset3D/Stage/Meshes/StageOpt.obj"
+dest_files=[ "res://.import/StageOpt.obj-5187eb8d01474b075b10631cb8f2d0fd.mesh", "res://.import/StageOpt.obj-5187eb8d01474b075b10631cb8f2d0fd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

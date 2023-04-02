@@ -8,7 +8,6 @@ namespace Rhythmer
 		public AudioStream Stream;
 		public string IdType;
 		public int Id;
-
 		public PlaybackMarker(double Time, AudioStream Stream, string IdType = "", int Id = 0)
 		{
 			this.Time = Time;

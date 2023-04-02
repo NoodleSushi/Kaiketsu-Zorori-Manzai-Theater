@@ -2,5 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>ProjectZorori</RootNamespace>
+    <NoWarn>1006</NoWarn>
   </PropertyGroup>
 </Project>

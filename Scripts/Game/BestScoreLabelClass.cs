@@ -1,5 +1,4 @@
 ﻿using Godot;
-using System;
 
 namespace Game
 {
@@ -9,7 +8,7 @@ namespace Game
         {
             set
             {
-                Text = $"自己ベスト    {(value > 9 ? " " : "")}{value}";
+                Text = $"自己ベスト   {(value > 99 ? "" : (value > 9 ? " " : "  "))}{value}";
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Game
         public static void SaveScore(int Score)
         {
             ConfigFile Config = new ConfigFile();
-            Error Err = Config.Load(SAVE_DIRECTORY);
+            Config.Load(SAVE_DIRECTORY);
             BestScore = Math.Max(Score, BestScore);
             Config.SetValue(SECTION_MAIN, KEY_SCORE, BestScore);
             Config.Save(SAVE_DIRECTORY);

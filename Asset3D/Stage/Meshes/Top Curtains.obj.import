@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Top Curtains.obj-3dde9ba1ff2bf67cfaab99fd736f8aeb.mesh"
+
+[deps]
+
+files=[ "res://.import/Top Curtains.obj-3dde9ba1ff2bf67cfaab99fd736f8aeb.mesh" ]
+
+source_file="res://Asset3D/Stage/Meshes/Top Curtains.obj"
+dest_files=[ "res://.import/Top Curtains.obj-3dde9ba1ff2bf67cfaab99fd736f8aeb.mesh", "res://.import/Top Curtains.obj-3dde9ba1ff2bf67cfaab99fd736f8aeb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

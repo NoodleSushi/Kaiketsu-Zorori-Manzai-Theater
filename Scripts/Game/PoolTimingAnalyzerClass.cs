@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 namespace Game
@@ -8,54 +9,56 @@ namespace Game
         public const float DIFFERENCE_RANGE_MIN = -0.125f;
         public const float DIFFERENCE_RANGE_MAX = 0.1875f;
 
-        private List<float> MissionList = new List<float>();
-        private List<float> InputList = new List<float>();
-        private List<bool> IsPointList = new List<bool>();
+        private readonly List<float> InputBeatList = new List<float>();
+        private List<float> MissionBeatList = new List<float>();
+        private List<bool> IsPointGivenList = new List<bool>();
 
-        public bool AppendInput(float inputTime)
+        public bool AppendInputTime(float inputTime)
         {
-            InputList.Add(inputTime);
-            return IsPointList[InputList.Count - 1];
+            InputBeatList.Add(inputTime);
+            return IsPointGivenList[Math.Min(InputBeatList.Count - 1, IsPointGivenList.Count - 1)];
         }
 
-        public void Reset(List<float> newMission, List<bool> newIsPointList)
+        public void Reset((List<float> missionList, List<bool> isPointList) MissionIsPointList)
         {
-            MissionList = newMission;
-            IsPointList = newIsPointList;
-            InputList.Clear();
+            MissionBeatList = MissionIsPointList.missionList;
+            IsPointGivenList = MissionIsPointList.isPointList;
+            InputBeatList.Clear();
         }
 
         public void Reset()
         {
-            MissionList.Clear();
-            InputList.Clear();
-            IsPointList.Clear();
+            MissionBeatList.Clear();
+            InputBeatList.Clear();
+            IsPointGivenList.Clear();
         }
 
-        private bool isOopsieFound(int index, float inputPlaceholder)
+        private bool IsOopsieFound(int index, float currentBeat)
         {
-            bool isInputAvailable = InputList.Count - 1 >= index;
-            float inputTime = isInputAvailable ? InputList[index] : inputPlaceholder;
-            float missionTime = MissionList[index];
+            bool isInputAvailable = InputBeatList.Count - 1 >= index;
+            float inputTime = isInputAvailable ? InputBeatList[index] : currentBeat;
+            float missionTime = MissionBeatList[index];
             float difference = inputTime - missionTime;
             bool isInputOutOfRange = !(DIFFERENCE_RANGE_MIN <= difference && difference <= DIFFERENCE_RANGE_MAX);
             bool isOopsie = (isInputOutOfRange && ((!isInputAvailable && inputTime > missionTime) || isInputAvailable));
-            if (isOopsie)
-            {
-                GD.Print("isInputOutOfRange: ", isInputOutOfRange);   
-                GD.Print("difference: ", difference);
-            }
+            #if DEBUG
+                if (isOopsie)
+                {
+                    GD.Print("isInputOutOfRange: ", isInputOutOfRange);   
+                    GD.Print("difference: ", difference);
+                }
+            #endif
             return isOopsie;
         }
 
-        public bool IsAcceptable(float inputPlaceholder)
+        public bool IsAcceptable(float currentBeat)
         {
-            if (InputList.Count > MissionList.Count)
+            if (InputBeatList.Count > MissionBeatList.Count)
                 return false;
 
-            for (int i = 0; i < MissionList.Count; i++)
+            for (int i = 0; i < MissionBeatList.Count; i++)
             {
-                if (isOopsieFound(i, inputPlaceholder))
+                if (IsOopsieFound(i, currentBeat))
                 {
                     return false;
                 }
@@ -66,7 +69,7 @@ namespace Game
 
         public override string ToString()
         {
-            return $"[{string.Join(", ", MissionList)}]\n[{string.Join(",", IsPointList)}]\n[{string.Join(",", InputList)}]";
+            return $"[{string.Join(", ", MissionBeatList)}]\n[{string.Join(",", IsPointGivenList)}]\n[{string.Join(",", InputBeatList)}]";
         }
     }
 }

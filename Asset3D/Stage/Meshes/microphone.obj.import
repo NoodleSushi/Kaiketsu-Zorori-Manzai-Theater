@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/microphone.obj-3f527c5a71897f469a265b399ee8fb0f.mesh"
+
+[deps]
+
+files=[ "res://.import/microphone.obj-3f527c5a71897f469a265b399ee8fb0f.mesh" ]
+
+source_file="res://Asset3D/Stage/Meshes/microphone.obj"
+dest_files=[ "res://.import/microphone.obj-3f527c5a71897f469a265b399ee8fb0f.mesh", "res://.import/microphone.obj-3f527c5a71897f469a265b399ee8fb0f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

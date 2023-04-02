@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Utils;
 using Rhythmer;
 
@@ -15,6 +15,7 @@ namespace Game.AudioPlayer
         {
             ZororiSampleLibrary = (ResourcePreloader)ZORORI_SAMPLE_RESOURCES_SCENE.Instance();
             RandomUnique = new RandomUniqueClass(5, ZororiSampleLibrary.GetResourceList().Length);
+            CurrentAudioPlayer.VolumeDb = -10f;
         }
 
         public void AddPlaybackMarker(double time = 0, bool isFail = false)
@@ -28,5 +29,7 @@ namespace Game.AudioPlayer
                 )
             );
         }
+        
+        public void Stop() => CurrentAudioPlayer.Stop();
     }
 }

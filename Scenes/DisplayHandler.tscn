@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Sprites/Zorori/Zorori_Iced5.png" type="Texture" id=1]
 [ext_resource path="res://Materials/OutlineMaterial.material" type="Material" id=2]
@@ -59,8 +59,14 @@
 [ext_resource path="res://Fonts/07YasashisaAntique.ttf" type="DynamicFontData" id=57]
 [ext_resource path="res://Sprites/Ishishi.png" type="Texture" id=58]
 [ext_resource path="res://Sprites/Noshishi.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/Hai.png" type="Texture" id=60]
 [ext_resource path="res://Sprites/Zorori/Zorori_Drag.png" type="Texture" id=61]
 [ext_resource path="res://Sprites/Inoshishi/Inoshishi_Drag.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/Fail.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/FailText.png" type="Texture" id=64]
+[ext_resource path="res://Audio/whoosh_2.wav" type="AudioStream" id=65]
+[ext_resource path="res://Audio/spotlight.wav" type="AudioStream" id=66]
+[ext_resource path="res://Audio/crowd_ambience.ogg" type="AudioStream" id=67]
 
 [sub_resource type="Animation" id=1]
 resource_name = "audience_laugh"
@@ -152,7 +158,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=5]
 resource_name = "game_over"
 length = 4.0
-step = 0.0833333
+step = 0.0416667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Doors:modulate")
 tracks/0/interp = 1
@@ -436,7 +442,7 @@ tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 0, 2.33333, 3 ),
+"times": PoolRealArray( 0, 2.33333, 2.95833 ),
 "transitions": PoolRealArray( 1, 0.297302, 1 ),
 "update": 0,
 "values": [ Vector2( -150, 0 ), Vector2( -150, 0 ), Vector2( -950, 0 ) ]
@@ -448,13 +454,240 @@ tracks/24/loop_wrap = true
 tracks/24/imported = false
 tracks/24/enabled = true
 tracks/24/keys = {
-"times": PoolRealArray( 0, 2.33333, 3 ),
+"times": PoolRealArray( 0, 2.33333, 2.95833 ),
 "transitions": PoolRealArray( 1, 0.297302, 1 ),
 "update": 0,
 "values": [ Vector2( 150, 0 ), Vector2( 150, 0 ), Vector2( 950, 0 ) ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath("Actors/ZororiSprite/Ice:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 1.83333 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Actors:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("SpeechBubbles:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Actors/ZororiSprite/Pot:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/29/type = "audio"
+tracks/29/path = NodePath("AudioStreamPlayer")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 66 )
+} ],
+"times": PoolRealArray( 0.75 )
+}
+tracks/30/type = "audio"
+tracks/30/path = NodePath("AudioStreamPlayer2")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 65 )
+} ],
+"times": PoolRealArray( 2.29167 )
+}
 
 [sub_resource type="Animation" id=6]
+resource_name = "game_over_state"
+length = 0.0833333
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Doors:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Floor:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Walls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CurtainsLayer1/Curtain_Top:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CurtainsLayer2/Curtain_Side:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CurtainsLayer2/Curtain_Side2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudienceLayer/Chairs:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Actors/ZororiSprite/Shadow:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.215686 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Actors/InoshishiSprite/Shadow:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.215686 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Spotlight1:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Spotlight2:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Actors:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
@@ -828,7 +1061,7 @@ tracks/30/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("Doors/StageBG/BGControl:visible")
+tracks/31/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D/IshishiDrag:position")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -836,11 +1069,11 @@ tracks/31/enabled = true
 tracks/31/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D/IshishiDrag:position")
+tracks/32/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D:visible")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -848,11 +1081,11 @@ tracks/32/enabled = true
 tracks/32/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("Actors/InoshishiSprite/IshishiDrag2D:visible")
+tracks/33/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D:visible")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -864,7 +1097,7 @@ tracks/33/keys = {
 "values": [ false ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D:visible")
+tracks/34/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D/NoshishiDrag:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -872,11 +1105,11 @@ tracks/34/enabled = true
 tracks/34/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/35/type = "value"
-tracks/35/path = NodePath("Actors/InoshishiSprite/NoshishiDrag2D/NoshishiDrag:position")
+tracks/35/path = NodePath("Actors/InoshishiSprite/Ishishi:visible")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/imported = false
@@ -884,11 +1117,11 @@ tracks/35/enabled = true
 tracks/35/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ true ]
 }
 tracks/36/type = "value"
-tracks/36/path = NodePath("Actors/InoshishiSprite/Ishishi:visible")
+tracks/36/path = NodePath("Actors/InoshishiSprite/Noshishi:visible")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/imported = false
@@ -900,7 +1133,7 @@ tracks/36/keys = {
 "values": [ true ]
 }
 tracks/37/type = "value"
-tracks/37/path = NodePath("Actors/InoshishiSprite/Noshishi:visible")
+tracks/37/path = NodePath("Actors/ZororiSprite/Zorori:visible")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/imported = false
@@ -912,7 +1145,7 @@ tracks/37/keys = {
 "values": [ true ]
 }
 tracks/38/type = "value"
-tracks/38/path = NodePath("Actors/ZororiSprite/Zorori:visible")
+tracks/38/path = NodePath("Actors/ZororiSprite/ZororiDrag2D:visible")
 tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/imported = false
@@ -921,10 +1154,10 @@ tracks/38/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/39/type = "value"
-tracks/39/path = NodePath("Actors/ZororiSprite/ZororiDrag2D:visible")
+tracks/39/path = NodePath("Actors:visible")
 tracks/39/interp = 1
 tracks/39/loop_wrap = true
 tracks/39/imported = false
@@ -933,10 +1166,106 @@ tracks/39/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
+"values": [ true ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("Doors/StageBG:visible")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ false ]
 }
+tracks/41/type = "value"
+tracks/41/path = NodePath("SpeechBubbles/Hai1:visible")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("SpeechBubbles/Hai2:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("SpeechBubbles/Hai1:scale")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.69938, 0.69938 ) ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("SpeechBubbles/Hai2:scale")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.69938, 0.69938 ) ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("SpeechBubbles/Fail:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("SpeechBubbles/Fail:scale")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("SpeechBubbles:visible")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.357143
 step = 0.0714286
 tracks/0/type = "value"
@@ -952,7 +1281,7 @@ tracks/0/keys = {
 "values": [ 2, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 step = 0.0625
 tracks/0/type = "value"
 tracks/0/path = NodePath("Actors/InoshishiSprite/Inoshishi:frame")
@@ -990,8 +1319,32 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 9, 10, 11, 12, 11, 10, 9, 10, 11, 12, 11, 10, 9, 10, 11, 12, 0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpeechBubbles/Fail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8125 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpeechBubbles/Fail:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0625, 0.125 ),
+"transitions": PoolRealArray( 0.406126, 0.267943, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.214286
 step = 0.0714286
 tracks/0/type = "value"
@@ -1031,8 +1384,9 @@ tracks/2/keys = {
 "values": [ 8, 7, 6 ]
 }
 
-[sub_resource type="Animation" id=10]
-length = 4.5
+[sub_resource type="Animation" id=11]
+length = 5.5
+step = 1.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera2D:position:y")
 tracks/0/interp = 1
@@ -1044,8 +1398,8 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 )
 }
 
-[sub_resource type="Animation" id=11]
-length = 0.357143
+[sub_resource type="Animation" id=12]
+length = 0.571429
 step = 0.0714286
 tracks/0/type = "value"
 tracks/0/path = NodePath("Actors/InoshishiSprite/Ishishi:frame")
@@ -1059,8 +1413,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2, 4, 5, 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeechBubbles/Hai2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.571429 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeechBubbles/Hai2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0714286, 0.142857 ),
+"transitions": PoolRealArray( 0.615573, 0.098073, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ), Vector2( 0.69938, 0.69938 ) ]
+}
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.5
 step = 0.125
 tracks/0/type = "value"
@@ -1076,7 +1454,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 110 ), Vector2( 0, 105 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 8.0
 step = 0.0833333
 tracks/0/type = "value"
@@ -1380,7 +1758,7 @@ tracks/24/keys = {
 "values": [ Vector2( 48, -104 ), Vector2( 48, -145 ), Vector2( 48, -115.5 ), Vector2( 48, -115.5 ), Vector2( 48, -103 ), Vector2( 48, -145 ), Vector2( 48, -115.5 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("Doors/StageBG/BGControl:visible")
+tracks/25/path = NodePath("Doors/StageBG:visible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -1389,11 +1767,11 @@ tracks/25/keys = {
 "times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, true ]
+"values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=14]
-length = 0.357143
+[sub_resource type="Animation" id=15]
+length = 0.571429
 step = 0.0714286
 tracks/0/type = "value"
 tracks/0/path = NodePath("Actors/InoshishiSprite/Noshishi:frame")
@@ -1407,8 +1785,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2, 4, 5, 6 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeechBubbles/Hai1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.571429 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeechBubbles/Hai1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.071, 0.142857 ),
+"transitions": PoolRealArray( 0.615573, 0.098073, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ), Vector2( 0.69938, 0.69938 ) ]
+}
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 2.5
 step = 0.125
 tracks/0/type = "value"
@@ -1484,7 +1886,7 @@ tracks/5/keys = {
 "values": [ 5, 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 2.0
 step = 0.125
 tracks/0/type = "value"
@@ -1512,7 +1914,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.214286
 step = 0.0714286
 tracks/0/type = "value"
@@ -1540,7 +1942,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 1.5
 step = 0.125
 tracks/0/type = "value"
@@ -1592,22 +1994,22 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=20]
 size = 90
 outline_size = 3
 use_filter = true
 font_data = ExtResource( 57 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=21]
 size = 30
 outline_size = 3
 use_filter = true
 font_data = ExtResource( 57 )
 
-[sub_resource type="CanvasItemMaterial" id=21]
+[sub_resource type="CanvasItemMaterial" id=22]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
 "frames": [ ExtResource( 29 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 24 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 38 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 33 ) ],
 "loop": true,
@@ -1615,7 +2017,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=23]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 18 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 15 ) ],
 "loop": false,
@@ -1623,7 +2025,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 19 ) ],
 "loop": true,
@@ -1631,7 +2033,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=26]
 animations = [ {
 "frames": [ ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
@@ -1641,31 +2043,48 @@ animations = [ {
 
 [node name="DisplayHandler" type="Node2D"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 67 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 65 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 67 )
+autoplay = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/audience_laugh = SubResource( 1 )
 anims/audience_laugh_fail = SubResource( 2 )
 anims/audience_pulse = SubResource( 3 )
 anims/bgcontrol_pulse = SubResource( 4 )
 anims/game_over = SubResource( 5 )
-anims/init = SubResource( 6 )
-anims/inoshishi_hai = SubResource( 7 )
-anims/inoshishi_panic = SubResource( 8 )
-anims/inoshishi_pulse = SubResource( 9 )
-anims/intro = SubResource( 10 )
-anims/ishishi_hai = SubResource( 11 )
-anims/mini_zorori_pulse = SubResource( 12 )
-anims/next_stage = SubResource( 13 )
-anims/noshishi_hai = SubResource( 14 )
-anims/zorori_fail = SubResource( 15 )
-anims/zorori_gag = SubResource( 16 )
-anims/zorori_pulse = SubResource( 17 )
-anims/zorori_unfrozen = SubResource( 18 )
+anims/game_over_state = SubResource( 6 )
+anims/init = SubResource( 7 )
+anims/inoshishi_hai = SubResource( 8 )
+anims/inoshishi_panic = SubResource( 9 )
+anims/inoshishi_pulse = SubResource( 10 )
+anims/intro = SubResource( 11 )
+anims/ishishi_hai = SubResource( 12 )
+anims/mini_zorori_pulse = SubResource( 13 )
+anims/next_stage = SubResource( 14 )
+anims/noshishi_hai = SubResource( 15 )
+anims/zorori_fail = SubResource( 16 )
+anims/zorori_gag = SubResource( 17 )
+anims/zorori_pulse = SubResource( 18 )
+anims/zorori_unfrozen = SubResource( 19 )
 
 [node name="Doors" type="Node2D" parent="."]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -58.0692 )
 scale = Vector2( 0.82, 0.82 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StageBG" type="Node2D" parent="Doors"]
+visible = false
 show_behind_parent = true
 
 [node name="StageBG" type="Sprite" parent="Doors/StageBG"]
@@ -1764,7 +2183,6 @@ position = Vector2( 220, 0 )
 texture = ExtResource( 55 )
 
 [node name="BGControl" type="Control" parent="Doors/StageBG"]
-visible = false
 margin_left = -270.0
 margin_top = -148.0
 margin_right = 270.0
@@ -1786,7 +2204,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.8, 1 )
 rect_pivot_offset = Vector2( 236, 0 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0.129412, 0.0980392, 0.0627451, 1 )
 text = "SPEED UP!"
 align = 1
@@ -1806,7 +2224,7 @@ margin_right = 57.0
 margin_bottom = 66.634
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 custom_colors/font_color = Color( 0.129412, 0.0980392, 0.0627451, 1 )
 text = "98 BPM"
 align = 1
@@ -1829,46 +2247,72 @@ offset = Vector2( 0, -151 )
 flip_h = true
 
 [node name="Floor" type="Sprite" parent="."]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, 193.532 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 43 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Walls" type="Sprite" parent="."]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -114.862 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 42 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Spotlight1" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 21 )
+self_modulate = Color( 1, 1, 1, 0.156863 )
+material = SubResource( 22 )
 position = Vector2( 80, -212 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 52 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Spotlight2" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 21 )
+self_modulate = Color( 1, 1, 1, 0.156863 )
+material = SubResource( 22 )
 position = Vector2( -80, -212 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 52 )
 flip_h = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Microphone" type="Sprite" parent="."]
 position = Vector2( 0, -259.94 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 44 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Actors" type="Node2D" parent="."]
 material = ExtResource( 2 )
 position = Vector2( 0, 134.007 )
 scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="InoshishiSprite" type="Node2D" parent="Actors"]
 use_parent_material = true
-position = Vector2( -950, 0 )
+position = Vector2( -150, 0 )
 
 [node name="Shadow" type="Sprite" parent="Actors/InoshishiSprite"]
-self_modulate = Color( 1, 1, 1, 0.215686 )
+self_modulate = Color( 1, 1, 1, 0.392157 )
 scale = Vector2( 1.825, 1.364 )
 texture = ExtResource( 51 )
 
@@ -1884,7 +2328,6 @@ __meta__ = {
 use_parent_material = true
 texture = ExtResource( 62 )
 vframes = 7
-frame = 6
 
 [node name="NoshishiDrag2D" type="Node2D" parent="Actors/InoshishiSprite"]
 visible = false
@@ -1898,17 +2341,15 @@ __meta__ = {
 use_parent_material = true
 texture = ExtResource( 62 )
 vframes = 7
-frame = 3
 
 [node name="Inoshishi" type="AnimatedSprite" parent="Actors/InoshishiSprite"]
 visible = false
 material = ExtResource( 2 )
-frames = SubResource( 22 )
+frames = SubResource( 23 )
 frame = 6
 offset = Vector2( 0, -110 )
 
 [node name="Ishishi" type="Sprite" parent="Actors/InoshishiSprite"]
-visible = false
 use_parent_material = true
 position = Vector2( 48, -115.5 )
 texture = ExtResource( 58 )
@@ -1916,7 +2357,6 @@ hframes = 5
 vframes = 3
 
 [node name="Noshishi" type="Sprite" parent="Actors/InoshishiSprite"]
-visible = false
 use_parent_material = true
 position = Vector2( -47, -108.5 )
 texture = ExtResource( 59 )
@@ -1925,10 +2365,10 @@ vframes = 3
 
 [node name="ZororiSprite" type="Node2D" parent="Actors"]
 use_parent_material = true
-position = Vector2( 950, 0 )
+position = Vector2( 150, 0 )
 
 [node name="Shadow" type="Sprite" parent="Actors/ZororiSprite"]
-self_modulate = Color( 1, 1, 1, 0.215686 )
+self_modulate = Color( 1, 1, 1, 0.392157 )
 scale = Vector2( 1.825, 1.364 )
 texture = ExtResource( 51 )
 
@@ -1942,20 +2382,19 @@ __meta__ = {
 
 [node name="ZororiDrag" type="Sprite" parent="Actors/ZororiSprite/ZororiDrag2D"]
 use_parent_material = true
+position = Vector2( 500, 0 )
 texture = ExtResource( 61 )
 vframes = 4
-frame = 3
 
 [node name="Zorori" type="AnimatedSprite" parent="Actors/ZororiSprite"]
-visible = false
 use_parent_material = true
-frames = SubResource( 23 )
+frames = SubResource( 24 )
 frame = 12
 offset = Vector2( 40, -210 )
 
 [node name="Ice" type="AnimatedSprite" parent="Actors/ZororiSprite"]
 visible = false
-frames = SubResource( 24 )
+frames = SubResource( 25 )
 offset = Vector2( 40, -210 )
 
 [node name="Pot" type="Sprite" parent="Actors/ZororiSprite"]
@@ -1964,7 +2403,41 @@ use_parent_material = true
 position = Vector2( 58, -620 )
 texture = ExtResource( 56 )
 hframes = 6
-frame = 2
+
+[node name="SpeechBubbles" type="Node2D" parent="."]
+
+[node name="Hai1" type="Sprite" parent="SpeechBubbles"]
+visible = false
+position = Vector2( -227.548, -114.895 )
+rotation = -0.435127
+scale = Vector2( 0.69938, 0.69938 )
+texture = ExtResource( 60 )
+offset = Vector2( 0, 10 )
+
+[node name="Hai2" type="Sprite" parent="SpeechBubbles"]
+visible = false
+position = Vector2( -3.9767, -126.269 )
+rotation = 0.545108
+scale = Vector2( 0.69938, 0.69938 )
+texture = ExtResource( 60 )
+offset = Vector2( 0, 10 )
+
+[node name="Fail" type="Node2D" parent="SpeechBubbles"]
+visible = false
+position = Vector2( -78.4877, -127.245 )
+rotation = -0.0880401
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bubble" type="Sprite" parent="SpeechBubbles/Fail"]
+position = Vector2( 17.326, 0 )
+scale = Vector2( 1.974, 0.884 )
+texture = ExtResource( 63 )
+
+[node name="Text" type="Sprite" parent="SpeechBubbles/Fail"]
+scale = Vector2( 0.917, 0.917 )
+texture = ExtResource( 64 )
 
 [node name="CurtainsLayer1" type="CanvasLayer" parent="."]
 scale = Vector2( 0.909, 0.909 )
@@ -1973,6 +2446,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.1
 
 [node name="Curtain_Top" type="Sprite" parent="CurtainsLayer1"]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 0, -240.931 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 40 )
@@ -1984,11 +2458,13 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.25
 
 [node name="Curtain_Side" type="Sprite" parent="CurtainsLayer2"]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( -522.662, -110.386 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 41 )
 
 [node name="Curtain_Side2" type="Sprite" parent="CurtainsLayer2"]
+modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 position = Vector2( 522.662, -110.386 )
 scale = Vector2( 0.82, 0.82 )
 texture = ExtResource( 41 )
@@ -2001,6 +2477,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.35
 
 [node name="Chairs" type="Sprite" parent="AudienceLayer"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
 position = Vector2( 0, 285.904 )
 scale = Vector2( 0.779, 0.779 )
 texture = ExtResource( 45 )
@@ -2009,7 +2486,7 @@ texture = ExtResource( 45 )
 show_behind_parent = true
 position = Vector2( 0, -67 )
 scale = Vector2( 0.54, 0.54 )
-frames = SubResource( 25 )
+frames = SubResource( 26 )
 
 [node name="GradientLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
@@ -2031,4 +2508,5 @@ visible = false
 texture = ExtResource( 48 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -600 )
 current = true

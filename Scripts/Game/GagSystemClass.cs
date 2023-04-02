@@ -3,100 +3,86 @@ using System.Collections.Generic;
 
 namespace Game
 {
+    // Book[PageIndex] = Page
+    // ((Page >> GagIndex) & 0b1) == 0b1 = IsFailureGag
     public class GagSystemClass
     {
-        private static readonly List<ushort> BOOK_DEFAULT = new List<ushort> { 0x8, 0xC8, 0x8C, 0x80, 0xC8, 0x82, 0xF9C8 };
+        private static readonly List<ushort> BOOK_DEFAULT = new List<ushort> {
+            0b1000,
+            0b1100_1000,
+            0b1000_1100,
+            0b1000_0000,
+            0b1100_1000,
+            0b1000_0010,
+            0b1111_1001_1100_1000
+        };
         private List<ushort> Book = BOOK_DEFAULT;
-        private sbyte Stage = 0;
-        public sbyte SystemPointer = -1;
-        private sbyte SoundPointer
+        private sbyte _pageIndex = 0;
+        public sbyte PageIndex
         {
-            get => (sbyte)(SystemPointer + 1);
-        }
-        public sbyte StageBGMIndex
-        {
-            get => Stage;
-        }
-        public sbyte StageBGMBars
-        {
-            get => (sbyte)(Stage == 0 ? 4 : Stage == 6 ? 16 : 8);
+            get => _pageIndex;
+            private set
+            {
+                _pageIndex = value;
+            }
         }
 
-        public int Pointer2Out(bool IsSoundPointer = false)
+        public sbyte StageBGMBarCount
         {
-            return (Book[Stage] >> Mathf.Max(SystemPointer + (IsSoundPointer ? 1 : 0), 0)) & 0x1;
+            get => (sbyte)(PageIndex == 0 ? 4 : PageIndex == 6 ? 16 : 8);
         }
 
-        public bool IsPointer2Out(bool IsSoundPointer = false)
+
+        public bool GagIndex2IsFailureGag(sbyte GagIndex)
         {
-            return Pointer2Out(IsSoundPointer) == 1;
+            return ((Book[PageIndex] >> GagIndex) & 0b1) == 0b1;
         }
 
-        public bool IsBeat2Out(float beat)
+        public bool Beat2IsFailureGag(float beat)
         {
-            return ((Book[Stage] >> (int) Mathf.Max((beat-8f) / 4f, 0f)) & 0x1) == 1;
+            return ((Book[PageIndex] >> (int) Mathf.Max((beat-8f) / 4f, 0f)) & 0x1) == 0b1;
         }
 
         private void OverwritePage()
         {
-            if (Stage != 0)
+            if (PageIndex != 0)
             {
-                Book[Stage] = (ushort)(GD.Randi() % (Stage == 6 ? 0x8001 : 0x801));
+                Book[PageIndex] = (ushort)(GD.Randi() % (PageIndex == 6 ? 0x8001 : 0x801));
             }
         }
 
-        public void GotoNextStage()
+        public void TurnToNextPage()
         {
             OverwritePage();
-            Stage = (sbyte)((Stage + 1) % 7);
-            SystemPointer = -1;
+            PageIndex = (sbyte)((PageIndex + 1) % 7);
         }
 
         public void Reset()
         {
             Book = BOOK_DEFAULT;
-            Stage = 0;
-            SystemPointer = -1;
+            PageIndex = 0;
         }
 
-        public bool UpdatePointer(float Beats)
-        {
-            sbyte _NewPointer = (sbyte)Mathf.FloorToInt(Beats / 4.0f);
-            if (_NewPointer != SystemPointer)
-            {
-                SystemPointer = _NewPointer;
-                return true;
-            }
-            return false;
-        }
-
-        public List<float> GenerateMissionList()
+        public (List<float> missionList, List<bool> isPointList) GenerateMissionIsPointList()
         {
             List<float> missionList = new List<float>();
-            for (sbyte bar = 0; bar < StageBGMBars; bar++)
-            {
-                bool isOut = ((Book[Stage] >> bar) & 0x1) == 0x1;
-                missionList.Add((bar + 2) * 4f + 2.5f);
-                if (!isOut)
-                    missionList.Add((bar + 2) * 4f + 3f);
-            }
-            return missionList;
-        }
-
-        public List<bool> GenerateIsPointList()
-        {
             List<bool> isPointList = new List<bool>();
-            for (sbyte bar = 0; bar < StageBGMBars; bar++)
+            for (sbyte bar = 0; bar < StageBGMBarCount; bar++)
             {
-                bool isOut = ((Book[Stage] >> bar) & 0x1) == 0x1;
-                if (isOut) isPointList.Add(true);
+                bool isOut = ((Book[PageIndex] >> bar) & 0b1) == 0b1;
+                missionList.Add((bar + 2) * 4f + 2.5f);
+                if (isOut)
+                {
+                    isPointList.Add(true);
+                }
                 else
                 {
+                    missionList.Add((bar + 2) * 4f + 3f);
                     isPointList.Add(false);
                     isPointList.Add(true);
                 }
             }
-            return isPointList;
+            return (missionList, isPointList);
         }
     }
 }

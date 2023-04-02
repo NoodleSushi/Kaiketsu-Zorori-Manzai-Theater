@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Side Curtains.obj-4c4251d0f43a9e2e0edadcef6164b7b5.mesh"
+
+[deps]
+
+files=[ "res://.import/Side Curtains.obj-4c4251d0f43a9e2e0edadcef6164b7b5.mesh" ]
+
+source_file="res://Asset3D/Stage/Meshes/Side Curtains.obj"
+dest_files=[ "res://.import/Side Curtains.obj-4c4251d0f43a9e2e0edadcef6164b7b5.mesh", "res://.import/Side Curtains.obj-4c4251d0f43a9e2e0edadcef6164b7b5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

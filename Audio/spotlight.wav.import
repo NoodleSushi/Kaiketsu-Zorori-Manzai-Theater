@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spotlight.wav-34c83508c628f694a1d0974131fc21f6.sample"
+
+[deps]
+
+source_file="res://Audio/spotlight.wav"
+dest_files=[ "res://.import/spotlight.wav-34c83508c628f694a1d0974131fc21f6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -10,7 +10,7 @@ namespace Game.AudioPlayer
         public void PlayBGMStage(int stageIndex = 0)
         {
             Stream = BGM_SAMPLE_LIST[stageIndex];
-            VolumeDb = 0f;
+            VolumeDb = -10f;
             Play();
         }
     }

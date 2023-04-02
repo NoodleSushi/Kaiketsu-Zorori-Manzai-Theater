@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scripts/Game/GameHandler.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Game/AudioPlayer/Bgm.cs" type="Script" id=2]
@@ -15,364 +15,161 @@
 [ext_resource path="res://Audio/Applause1.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Scripts/Game/AudioPlayer/Apl.cs" type="Script" id=14]
 [ext_resource path="res://Audio/Applause2.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Audio/BGM0.ogg" type="AudioStream" id=16]
-[ext_resource path="res://Audio/BGM4.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Audio/BGM5.ogg" type="AudioStream" id=18]
-[ext_resource path="res://Audio/BGM3.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Audio/BGM6.ogg" type="AudioStream" id=20]
-[ext_resource path="res://Audio/BGM2.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Audio/BGM1.ogg" type="AudioStream" id=22]
-[ext_resource path="res://Audio/Hai.wav" type="AudioStream" id=23]
-[ext_resource path="res://Audio/Fail.wav" type="AudioStream" id=24]
-[ext_resource path="res://Audio/ZororiSamples.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Audio/Zorori/ZororiFail2.wav" type="AudioStream" id=26]
+[ext_resource path="res://Audio/ZororiSamples.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Audio/Zorori/ZororiFail2.wav" type="AudioStream" id=17]
+[ext_resource path="res://Audio/BGM2.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/BGM6.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Audio/Hai.wav" type="AudioStream" id=20]
+[ext_resource path="res://Audio/BGM5.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Audio/BGM0.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Audio/Fail.wav" type="AudioStream" id=23]
+[ext_resource path="res://Audio/BGM1.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Audio/BGM3.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Audio/BGM4.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Resources/MainBlendTree.res" type="AnimationNodeBlendTree" id=27]
+[ext_resource path="res://Audio/GameOver.ogg" type="AudioStream" id=28]
 
-[sub_resource type="AnimationNodeAnimation" id=1]
-animation = "init"
+[sub_resource type="AnimationNodeBlendTree" id=1]
 
-[sub_resource type="AnimationNodeTimeScale" id=2]
-
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "audience_laugh"
-
-[sub_resource type="AnimationNodeOneShot" id=4]
-filter_enabled = true
-filters = [ "AudienceLayer/Chairs/Audience:frame", "AudienceLayer/Chairs/Audience:offset", "AudienceLayer/Chairs/Audience:position" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "audience_laugh_fail"
-
-[sub_resource type="AnimationNodeOneShot" id=6]
-filter_enabled = true
-filters = [ "AudienceLayer/Chairs/Audience:frame", "AudienceLayer/Chairs/Audience:offset", "AudienceLayer/Chairs/Audience:position" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "audience_pulse"
-
-[sub_resource type="AnimationNodeOneShot" id=8]
-filter_enabled = true
-filters = [ "AudienceLayer/Chairs/Audience:position" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "bgcontrol_pulse"
-
-[sub_resource type="AnimationNodeOneShot" id=10]
-filter_enabled = true
-filters = [ "Doors/StageBG/BGControl:rect_position" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "game_over"
 
-[sub_resource type="AnimationNodeOneShot" id=12]
-fadein_time = 0.0
-fadeout_time = 0.0
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "game_over_state"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "inoshishi_panic"
-
-[sub_resource type="AnimationNodeOneShot" id=14]
-filter_enabled = true
-filters = [ "Actors/InoshishiSprite/Inoshishi:frame", "Actors/InoshishiSprite/Ishishi:frame", "Actors/InoshishiSprite/Noshishi:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "inoshishi_pulse"
-
-[sub_resource type="AnimationNodeOneShot" id=16]
-filter_enabled = true
-filters = [ "Actors/InoshishiSprite/Inoshishi:frame", "Actors/InoshishiSprite/Ishishi:frame", "Actors/InoshishiSprite/Noshishi:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "intro"
 
-[sub_resource type="AnimationNodeOneShot" id=18]
-filter_enabled = true
-filters = [ "Camera2D:position", "Camera2D:position:y" ]
-fadein_time = 0.0
-fadeout_time = 0.0
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "ishishi_hai"
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeOneShot" id=20]
-filter_enabled = true
-filters = [ "Actors/InoshishiSprite/Ishishi:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+auto_advance = true
 
-[sub_resource type="AnimationNodeAnimation" id=21]
-animation = "mini_zorori_pulse"
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeOneShot" id=22]
-filter_enabled = true
-filters = [ "Doors/StageBG/MiniZororis:position" ]
-fadein_time = 0.0
-fadeout_time = 0.0
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/MainBlendTree/node = ExtResource( 27 )
+states/MainBlendTree/position = Vector2( 424.333, 112.333 )
+states/START/node = SubResource( 1 )
+states/START/position = Vector2( 55.3333, 115 )
+states/game_over/node = SubResource( 2 )
+states/game_over/position = Vector2( 704.333, 121.333 )
+states/game_over_state/node = SubResource( 3 )
+states/game_over_state/position = Vector2( 615.667, 291.778 )
+states/intro/node = SubResource( 4 )
+states/intro/position = Vector2( 219, 116.222 )
+transitions = [ "MainBlendTree", "game_over", SubResource( 5 ), "game_over", "game_over_state", SubResource( 6 ), "START", "intro", SubResource( 7 ), "intro", "MainBlendTree", SubResource( 8 ) ]
+start_node = "START"
+graph_offset = Vector2( -77.704, 46.9525 )
 
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "next_stage"
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
-[sub_resource type="AnimationNodeOneShot" id=24]
-
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "noshishi_hai"
-
-[sub_resource type="AnimationNodeOneShot" id=26]
-filter_enabled = true
-filters = [ "Actors/InoshishiSprite/Noshishi:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "zorori_fail"
-
-[sub_resource type="AnimationNodeOneShot" id=28]
-filter_enabled = true
-filters = [ "Actors/ZororiSprite/Ice:frame", "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Pot:frame", "Actors/ZororiSprite/Pot:position", "Actors/ZororiSprite/Pot:visible", "Actors/ZororiSprite/Zorori:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "zorori_gag"
-
-[sub_resource type="AnimationNodeOneShot" id=30]
-filter_enabled = true
-filters = [ "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "zorori_pulse"
-
-[sub_resource type="AnimationNodeOneShot" id=32]
-filter_enabled = true
-filters = [ "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "zorori_unfrozen"
-
-[sub_resource type="AnimationNodeOneShot" id=34]
-filters = [ "Actors/ZororiSprite/Ice:frame", "Actors/ZororiSprite/Ice:visible", "Actors/ZororiSprite/Zorori:frame" ]
-fadein_time = 0.0
-fadeout_time = 0.0
-
-[sub_resource type="AnimationNodeBlendTree" id=35]
-graph_offset = Vector2( -82.6666, 205.334 )
-nodes/InitAnimation/node = SubResource( 1 )
-nodes/InitAnimation/position = Vector2( -1306.67, -986.667 )
-nodes/TimeScale/node = SubResource( 2 )
-nodes/TimeScale/position = Vector2( -240, -826.667 )
-nodes/audience_laughAnimation/node = SubResource( 3 )
-nodes/audience_laughAnimation/position = Vector2( -266.667, 53.3333 )
-nodes/audience_laughOneShot/node = SubResource( 4 )
-nodes/audience_laughOneShot/position = Vector2( -26.6667, 0 )
-nodes/audience_laugh_failAnimation/node = SubResource( 5 )
-nodes/audience_laugh_failAnimation/position = Vector2( -346.667, 293.333 )
-nodes/audience_laugh_failOneShot/node = SubResource( 6 )
-nodes/audience_laugh_failOneShot/position = Vector2( -80, 213.333 )
-nodes/audience_pulseAnimation/node = SubResource( 7 )
-nodes/audience_pulseAnimation/position = Vector2( -266.667, -133.333 )
-nodes/audience_pulseOneShot/node = SubResource( 8 )
-nodes/audience_pulseOneShot/position = Vector2( -26.6667, -186.667 )
-nodes/bgcontrol_pulseAnimation/node = SubResource( 9 )
-nodes/bgcontrol_pulseAnimation/position = Vector2( -373.333, 480 )
-nodes/bgcontrol_pulseOneShot/node = SubResource( 10 )
-nodes/bgcontrol_pulseOneShot/position = Vector2( -53.3333, 426.667 )
-nodes/game_overAnimation/node = SubResource( 11 )
-nodes/game_overAnimation/position = Vector2( 346.667, 426.667 )
-nodes/game_overOneShot/node = SubResource( 12 )
-nodes/game_overOneShot/position = Vector2( 592.333, 368.333 )
-nodes/inoshishi_panicAnimation/node = SubResource( 13 )
-nodes/inoshishi_panicAnimation/position = Vector2( -853.333, -293.333 )
-nodes/inoshishi_panicOneShot/node = SubResource( 14 )
-nodes/inoshishi_panicOneShot/position = Vector2( -613.333, -346.667 )
-nodes/inoshishi_pulseAnimation/node = SubResource( 15 )
-nodes/inoshishi_pulseAnimation/position = Vector2( -266.667, -320 )
-nodes/inoshishi_pulseOneShot/node = SubResource( 16 )
-nodes/inoshishi_pulseOneShot/position = Vector2( -26.6667, -373.333 )
-nodes/introAnimation/node = SubResource( 17 )
-nodes/introAnimation/position = Vector2( 160, 240 )
-nodes/introOneShot/node = SubResource( 18 )
-nodes/introOneShot/position = Vector2( 346.667, 186.667 )
-nodes/ishishi_haiAnimation/node = SubResource( 19 )
-nodes/ishishi_haiAnimation/position = Vector2( -80, -853.333 )
-nodes/ishishi_haiOneShot/node = SubResource( 20 )
-nodes/ishishi_haiOneShot/position = Vector2( 160, -933.333 )
-nodes/mini_zorori_pulseAnimation/node = SubResource( 21 )
-nodes/mini_zorori_pulseAnimation/position = Vector2( 213.333, 0 )
-nodes/mini_zorori_pulseOneShot/node = SubResource( 22 )
-nodes/mini_zorori_pulseOneShot/position = Vector2( 480, -53.3333 )
-nodes/next_stageAnimation/node = SubResource( 23 )
-nodes/next_stageAnimation/position = Vector2( -1360, -800 )
-nodes/next_stageOneShot/node = SubResource( 24 )
-nodes/next_stageOneShot/position = Vector2( -1087.67, -875.667 )
-nodes/noshishi_haiAnimation/node = SubResource( 25 )
-nodes/noshishi_haiAnimation/position = Vector2( -80, -720 )
-nodes/noshishi_haiOneShot/node = SubResource( 26 )
-nodes/noshishi_haiOneShot/position = Vector2( 205.667, -749 )
-nodes/output/position = Vector2( 720, 186.667 )
-nodes/zorori_failAnimation/node = SubResource( 27 )
-nodes/zorori_failAnimation/position = Vector2( -826.667, -480 )
-nodes/zorori_failOneShot/node = SubResource( 28 )
-nodes/zorori_failOneShot/position = Vector2( -613.333, -533.333 )
-nodes/zorori_gagAnimation/node = SubResource( 29 )
-nodes/zorori_gagAnimation/position = Vector2( -826.667, -853.333 )
-nodes/zorori_gagOneShot/node = SubResource( 30 )
-nodes/zorori_gagOneShot/position = Vector2( -613.333, -906.667 )
-nodes/zorori_pulseAnimation/node = SubResource( 31 )
-nodes/zorori_pulseAnimation/position = Vector2( -266.667, -506.667 )
-nodes/zorori_pulseOneShot/node = SubResource( 32 )
-nodes/zorori_pulseOneShot/position = Vector2( -26.6667, -560 )
-nodes/zorori_unfrozenAnimation/node = SubResource( 33 )
-nodes/zorori_unfrozenAnimation/position = Vector2( -853.333, -666.667 )
-nodes/zorori_unfrozenOneShot/node = SubResource( 34 )
-nodes/zorori_unfrozenOneShot/position = Vector2( -613.333, -720 )
-node_connections = [ "output", 0, "game_overOneShot", "inoshishi_pulseOneShot", 0, "zorori_pulseOneShot", "inoshishi_pulseOneShot", 1, "inoshishi_pulseAnimation", "noshishi_haiOneShot", 0, "ishishi_haiOneShot", "noshishi_haiOneShot", 1, "noshishi_haiAnimation", "inoshishi_panicOneShot", 0, "zorori_failOneShot", "inoshishi_panicOneShot", 1, "inoshishi_panicAnimation", "ishishi_haiOneShot", 0, "TimeScale", "ishishi_haiOneShot", 1, "ishishi_haiAnimation", "next_stageOneShot", 0, "InitAnimation", "next_stageOneShot", 1, "next_stageAnimation", "zorori_gagOneShot", 0, "next_stageOneShot", "zorori_gagOneShot", 1, "zorori_gagAnimation", "zorori_unfrozenOneShot", 0, "zorori_gagOneShot", "zorori_unfrozenOneShot", 1, "zorori_unfrozenAnimation", "audience_pulseOneShot", 0, "inoshishi_pulseOneShot", "audience_pulseOneShot", 1, "audience_pulseAnimation", "zorori_failOneShot", 0, "zorori_unfrozenOneShot", "zorori_failOneShot", 1, "zorori_failAnimation", "TimeScale", 0, "inoshishi_panicOneShot", "game_overOneShot", 0, "introOneShot", "game_overOneShot", 1, "game_overAnimation", "audience_laughOneShot", 0, "audience_pulseOneShot", "audience_laughOneShot", 1, "audience_laughAnimation", "bgcontrol_pulseOneShot", 0, "audience_laugh_failOneShot", "bgcontrol_pulseOneShot", 1, "bgcontrol_pulseAnimation", "mini_zorori_pulseOneShot", 0, "bgcontrol_pulseOneShot", "mini_zorori_pulseOneShot", 1, "mini_zorori_pulseAnimation", "introOneShot", 0, "mini_zorori_pulseOneShot", "introOneShot", 1, "introAnimation", "audience_laugh_failOneShot", 0, "audience_laughOneShot", "audience_laugh_failOneShot", 1, "audience_laugh_failAnimation", "zorori_pulseOneShot", 0, "noshishi_haiOneShot", "zorori_pulseOneShot", 1, "zorori_pulseAnimation" ]
-
-[sub_resource type="DynamicFont" id=36]
+[sub_resource type="DynamicFont" id=11]
 size = 30
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 11 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 75
+outline_size = 5
+use_filter = true
+extra_spacing_char = -8
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 42
+outline_size = 3
+use_filter = true
+extra_spacing_char = -8
+font_data = ExtResource( 11 )
+
 [node name="Game" type="Node"]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 35 )
+tree_root = SubResource( 9 )
 anim_player = NodePath("../DisplayHandler/AnimationPlayer")
-active = true
-parameters/TimeScale/scale = 1.0
-parameters/audience_laughOneShot/active = false
-parameters/audience_laugh_failOneShot/active = false
-parameters/audience_pulseOneShot/active = false
-parameters/bgcontrol_pulseOneShot/active = false
-parameters/game_overOneShot/active = false
-parameters/inoshishi_panicOneShot/active = false
-parameters/inoshishi_pulseOneShot/active = false
-parameters/introOneShot/active = false
-parameters/ishishi_haiOneShot/active = false
-parameters/mini_zorori_pulseOneShot/active = false
-parameters/next_stageOneShot/active = false
-parameters/noshishi_haiOneShot/active = false
-parameters/zorori_failOneShot/active = false
-parameters/zorori_gagOneShot/active = false
-parameters/zorori_pulseOneShot/active = false
-parameters/zorori_unfrozenOneShot/active = false
+parameters/playback = SubResource( 10 )
+parameters/MainBlendTree/BaseInitBlend2/blend_amount = 0
+parameters/MainBlendTree/TimeScale/scale = 1.0
+parameters/MainBlendTree/audience_laughOneShot/active = false
+parameters/MainBlendTree/audience_laugh_failOneShot/active = false
+parameters/MainBlendTree/audience_pulseOneShot/active = false
+parameters/MainBlendTree/bgcontrol_pulseOneShot/active = false
+parameters/MainBlendTree/initOneShot/active = false
+parameters/MainBlendTree/inoshishi_panicOneShot/active = false
+parameters/MainBlendTree/inoshishi_pulseOneShot/active = false
+parameters/MainBlendTree/ishishi_haiOneShot/active = false
+parameters/MainBlendTree/mini_zorori_pulseOneShot/active = false
+parameters/MainBlendTree/next_stageOneShot/active = false
+parameters/MainBlendTree/noshishi_haiOneShot/active = false
+parameters/MainBlendTree/zorori_failOneShot/active = false
+parameters/MainBlendTree/zorori_gagOneShot/active = false
+parameters/MainBlendTree/zorori_pulseOneShot/active = false
+parameters/MainBlendTree/zorori_unfrozenOneShot/active = false
 script = ExtResource( 7 )
-
-[node name="Tween" type="Tween" parent="AnimationTree"]
+ASPTimedCallbackNodePath = NodePath("ASPTimedCallback")
 
 [node name="ASPTimedCallback" type="Node" parent="AnimationTree"]
 script = ExtResource( 10 )
 
 [node name="GameHandler" type="Node" parent="."]
 script = ExtResource( 1 )
-BgmPlayerPath = NodePath("../AudioPlayers/Bgm")
-GagPlayerPath = NodePath("../AudioPlayers/Gag")
-PlrPlayerPath = NodePath("../AudioPlayers/Plr")
-AplPlayerPath = NodePath("../AudioPlayers/Apl")
+BgmAudioPlayerPath = NodePath("../AudioPlayers/Bgm")
+GagAudioPlayerPath = NodePath("../AudioPlayers/Gag")
+PlrAudioPlayerPath = NodePath("../AudioPlayers/Plr")
+AplAudioPlayerPath = NodePath("../AudioPlayers/Apl")
+GameOverAudioPlayerPath = NodePath("../AudioPlayers/GameOver")
 GameAnimationTreePath = NodePath("../AnimationTree")
 DebugLabelPath = NodePath("../CanvasLayer/GUI/DebugLabel")
 ScoreLabelPath = NodePath("../CanvasLayer/GUI/ScoreLabel")
 BestScoreLabelPath = NodePath("../CanvasLayer/GUI/BestScoreLabel")
 BPMLabelPath = NodePath("../DisplayHandler/Doors/StageBG/BGControl/BPMLabel")
+GameOverScreenPath = NodePath("../CanvasLayer/GUI/GameOverScreen")
+isActive = false
 
 [node name="AudioPlayers" type="Node" parent="."]
 
 [node name="Plr" type="AudioStreamPlayer" parent="AudioPlayers"]
-bus = "Inoshishi"
+volume_db = -10.0
 script = ExtResource( 3 )
-PLR_HAI = ExtResource( 23 )
-PLR_GETOVERIT = ExtResource( 24 )
+PLR_HAI = ExtResource( 20 )
+PLR_GETOVERIT = ExtResource( 23 )
 
 [node name="Bgm" type="AudioStreamPlayer" parent="AudioPlayers"]
+volume_db = -10.0
 script = ExtResource( 2 )
 BPM = 98.0
-BGM_SAMPLE_LIST = [ ExtResource( 16 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ) ]
+BGM_SAMPLE_LIST = [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 21 ), ExtResource( 19 ) ]
 
 [node name="Gag" type="Node" parent="AudioPlayers"]
 script = ExtResource( 4 )
-ZORORI_SAMPLE_RESOURCES_SCENE = ExtResource( 25 )
-ZORORI_SAMPLE_FAIL = ExtResource( 26 )
+ZORORI_SAMPLE_RESOURCES_SCENE = ExtResource( 16 )
+ZORORI_SAMPLE_FAIL = ExtResource( 17 )
 
-[node name="Apl" type="AudioStreamPlayer" parent="AudioPlayers"]
-stream = ExtResource( 13 )
+[node name="Apl" type="Node" parent="AudioPlayers"]
 script = ExtResource( 14 )
 AUDIENCE_SAMPLE_1 = ExtResource( 13 )
 AUDIENCE_SAMPLE_2 = ExtResource( 15 )
 
+[node name="GameOver" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 28 )
+volume_db = -10.0
+
 [node name="DisplayHandler" parent="." instance=ExtResource( 5 )]
-
-[node name="Doors" parent="DisplayHandler" index="1"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="StageBG" parent="DisplayHandler/Doors/StageBG" index="0"]
-self_modulate = Color( 1, 0, 0.0862745, 1 )
-
-[node name="BGStripes" parent="DisplayHandler/Doors/StageBG" index="1"]
-modulate = Color( 1, 0.756863, 0, 1 )
-
-[node name="Floor" parent="DisplayHandler" index="2"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="Walls" parent="DisplayHandler" index="3"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="Spotlight1" parent="DisplayHandler" index="4"]
-self_modulate = Color( 1, 1, 1, 0.156863 )
-
-[node name="Spotlight2" parent="DisplayHandler" index="5"]
-self_modulate = Color( 1, 1, 1, 0.156863 )
-
-[node name="InoshishiSprite" parent="DisplayHandler/Actors" index="0"]
-position = Vector2( -150, 0 )
-
-[node name="Shadow" parent="DisplayHandler/Actors/InoshishiSprite" index="0"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
-
-[node name="Ishishi" parent="DisplayHandler/Actors/InoshishiSprite" index="4"]
-visible = true
-
-[node name="Noshishi" parent="DisplayHandler/Actors/InoshishiSprite" index="5"]
-visible = true
-
-[node name="ZororiSprite" parent="DisplayHandler/Actors" index="1"]
-position = Vector2( 150, 0 )
-
-[node name="Shadow" parent="DisplayHandler/Actors/ZororiSprite" index="0"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
-
-[node name="Zorori" parent="DisplayHandler/Actors/ZororiSprite" index="2"]
-visible = true
 
 [node name="Pot" parent="DisplayHandler/Actors/ZororiSprite" index="4"]
 frame = 5
 
-[node name="Curtain_Top" parent="DisplayHandler/CurtainsLayer1" index="0"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="Curtain_Side" parent="DisplayHandler/CurtainsLayer2" index="0"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="Curtain_Side2" parent="DisplayHandler/CurtainsLayer2" index="1"]
-modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-
-[node name="Chairs" parent="DisplayHandler/AudienceLayer" index="0"]
-modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+[node name="Camera2D" parent="DisplayHandler" index="17"]
+position = Vector2( 0, -597.726 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -412,7 +209,7 @@ margin_top = -117.268
 margin_right = -99.9999
 margin_bottom = -52.2676
 grow_horizontal = 0
-custom_fonts/font = SubResource( 36 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 0.247059, 0, 1 )
 text = "自己ベスト     0"
 align = 2
@@ -438,6 +235,49 @@ GameHandlerNodePath = NodePath("../../../GameHandler")
 [node name="DebugLabel" type="Label" parent="CanvasLayer/GUI"]
 margin_right = 40.0
 margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverScreen" type="ColorRect" parent="CanvasLayer/GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GUI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -238.5
+margin_top = -37.5
+margin_right = 238.5
+margin_bottom = 37.5
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ゲームオーバー"
+
+[node name="PersonalBestLabel" type="Label" parent="CanvasLayer/GUI/GameOverScreen"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.5
+margin_top = 41.2374
+margin_right = 136.5
+margin_bottom = 84.2374
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 0.4, 0.4, 1 )
+text = "自己ベスト更新!!!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
