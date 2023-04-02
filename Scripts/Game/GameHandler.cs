@@ -2,6 +2,7 @@ using Godot;
 using Rhythmer;
 using AnimKey = Game.GameAnimationTree.AnimKey;
 using AnimState = Game.GameAnimationTree.AnimState;
+using BtnComboDetector = Utils.BtnComboDetector;
 
 namespace Game
 {
@@ -27,6 +28,7 @@ namespace Game
 
         readonly private GagSystemClass GagSystem = new GagSystemClass();
         readonly private PoolTimingAnalyzerClass PoolTimingAnalyzer = new PoolTimingAnalyzerClass();
+        readonly private BtnComboDetector bcd = new BtnComboDetector("btn_primary", "btn_secondary");
 
         private bool IsGameOver = false;
         private float CurrentBPM = MAIN_BPM;
@@ -111,15 +113,30 @@ namespace Game
                 return;
 
             float inputBeat = (float) RS.GetASPBeatScaled(MAIN_BPM, BgmAudioPlayer);
-            bool isButtonPressed = (Input.IsActionJustPressed("ui_accept") && inputBeat > 8);
             bool isFail = GagSystem.Beat2IsFailureGag(inputBeat);
+            bool isButtonPressed = (Input.IsActionJustPressed("ui_accept") && inputBeat > 8);
+            bool isButtonValid = true;
+
+            if (!isFail)
+            {
+                isButtonPressed = Input.IsActionJustPressed("btn_primary") || Input.IsActionJustPressed("btn_secondary");
+                isButtonValid = !Input.IsActionJustPressed("btn_secondary");
+            }
+            else
+            {
+                var comboStatus = bcd.GetComboStatus();
+                isButtonPressed = comboStatus.IsDetected;
+                if (isButtonPressed)
+                    isButtonValid = comboStatus.IsSuccessful;
+            }
+
             bool isSafe;
             bool isPoint = false;
 
-            if (isButtonPressed)
+            if (isButtonPressed && isButtonValid)
                 isPoint = PoolTimingAnalyzer.AppendInputTime(inputBeat);
 
-            isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat);
+            isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat) && isButtonValid;
 
             if (isButtonPressed && isSafe)
             {

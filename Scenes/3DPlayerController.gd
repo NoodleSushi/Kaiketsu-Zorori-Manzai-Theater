@@ -66,6 +66,6 @@ func _input(event: InputEvent) -> void:
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - offset.y, -90, 90)
 
 
-func _on_DoorArea_body_shape_entered(body_id: int, body: Node, body_shape: int, local_shape: int) -> void:
+func _on_DoorArea_body_shape_entered(body_id: RID, body: Node, body_shape: int, local_shape: int) -> void:
 	if body == self:
 		animator.play("Exit")
