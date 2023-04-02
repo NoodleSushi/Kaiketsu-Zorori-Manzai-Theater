@@ -11,7 +11,6 @@ var move_velocity: Vector3 = Vector3()
 var accelerator: float = 0
 var camera: Camera
 var camera_spatial: Spatial
-var animator: AnimationPlayer
 var tween: Tween = Tween.new()
 
 var mouse_pressed: bool = true
@@ -23,7 +22,6 @@ func _ready() -> void:
 	add_child(tween)
 	camera_spatial = $CameraSpatial
 	camera = $CameraSpatial/Camera
-	animator = $"../CanvasLayer/AnimationPlayer"
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= weight*delta
@@ -68,4 +66,4 @@ func _input(event: InputEvent) -> void:
 
 func _on_DoorArea_body_shape_entered(body_id: RID, body: Node, body_shape: int, local_shape: int) -> void:
 	if body == self:
-		animator.play("Exit")
+		SceneTransition.transition_to_scene("res://Scenes/Menu.tscn")
