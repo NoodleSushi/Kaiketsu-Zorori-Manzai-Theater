@@ -114,7 +114,8 @@ namespace Game
 
             float inputBeat = (float) RS.GetASPBeatScaled(MAIN_BPM, BgmAudioPlayer);
             bool isFail = GagSystem.Beat2IsFailureGag(inputBeat);
-            bool isButtonPressed = (Input.IsActionJustPressed("ui_accept") && inputBeat > 8);
+            bool shallDetectButton = inputBeat > 8;
+            bool isButtonPressed;
             bool isButtonValid = true;
 
             if (!isFail)
@@ -130,15 +131,16 @@ namespace Game
                     isButtonValid = comboStatus.IsSuccessful;
             }
 
-            bool isSafe;
+            bool isSafe = true;
             bool isPoint = false;
 
-            if (isButtonPressed && isButtonValid)
+            if (shallDetectButton && isButtonPressed && isButtonValid)
                 isPoint = PoolTimingAnalyzer.AppendInputTime(inputBeat);
+            
+            if (shallDetectButton)
+                isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat) && isButtonValid;
 
-            isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat) && isButtonValid;
-
-            if (isButtonPressed && isSafe)
+            if (shallDetectButton && isButtonPressed && isSafe)
             {
                 if (isPoint)
                     CurrentScore += 1;
