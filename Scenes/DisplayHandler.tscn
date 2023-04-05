@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Sprites/Zorori/Zorori_Iced5.png" type="Texture" id=1]
 [ext_resource path="res://Materials/OutlineMaterial.material" type="Material" id=2]
@@ -47,7 +47,6 @@
 [ext_resource path="res://Sprites/Stage/Chairs.png" type="Texture" id=45]
 [ext_resource path="res://Sprites/Stage/Audience1.png" type="Texture" id=46]
 [ext_resource path="res://Sprites/Stage/Audience2.png" type="Texture" id=47]
-[ext_resource path="res://Reference.png" type="Texture" id=48]
 [ext_resource path="res://Sprites/Misc/Gradient.png" type="Texture" id=49]
 [ext_resource path="res://Sprites/Misc/Black.png" type="Texture" id=50]
 [ext_resource path="res://Sprites/Misc/Shadow.png" type="Texture" id=51]
@@ -2504,10 +2503,6 @@ position = Vector2( 0, -16 )
 scale = Vector2( 1, 437.856 )
 texture = ExtResource( 50 )
 offset = Vector2( 0, -0.5 )
-
-[node name="Reference" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 48 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -600 )

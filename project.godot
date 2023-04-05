@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "AnimationNodeOneShot",
-"class": "ASPSeeker",
-"language": "GDScript",
-"path": "res://Scripts/ASPSeeker.gd"
-} ]
-_global_script_class_icons={
-"ASPSeeker": ""
-}
-
 [application]
 
 config/name="Kaiketsu Zorori: Manzai Theater"
