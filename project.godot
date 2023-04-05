@@ -37,6 +37,9 @@ InputHelper="*res://addons/input_helper/input_helper.gd"
 
 [display]
 
+window/size/width=800
+window/size/test_width=1024
+window/size/test_height=600
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep_height"
