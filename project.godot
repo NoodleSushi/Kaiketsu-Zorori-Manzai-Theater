@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Project Zorori"
+config/name="Kaiketsu Zorori: Manzai Theater"
 run/main_scene="res://Scenes/Menu.tscn"
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
