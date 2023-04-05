@@ -8,7 +8,7 @@ namespace Game
         {
             set
             {
-                Text = $"自己ベスト   {(value > 99 ? "" : (value > 9 ? " " : "  "))}{value}";
+                Text = string.Format(Tr("LBL_RECORD"), value);
             }
         }
     }

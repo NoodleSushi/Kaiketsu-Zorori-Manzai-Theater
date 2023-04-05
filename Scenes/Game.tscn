@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Scripts/Game/GameHandler.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Game/AudioPlayer/Bgm.cs" type="Script" id=2]
@@ -28,6 +28,9 @@
 [ext_resource path="res://Audio/BGM4.ogg" type="AudioStream" id=26]
 [ext_resource path="res://Resources/MainBlendTree.res" type="AnimationNodeBlendTree" id=27]
 [ext_resource path="res://Audio/GameOver.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Fonts/MPLUSRounded1c-Black.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://Fonts/MenuNormalFont.tres" type="DynamicFont" id=30]
+[ext_resource path="res://UIOptions/Button2Action.gd" type="Script" id=31]
 
 [sub_resource type="AnimationNodeBlendTree" id=1]
 
@@ -77,19 +80,64 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=14]
 size = 75
 outline_size = 5
 use_filter = true
-extra_spacing_char = -8
-font_data = ExtResource( 11 )
+font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 42
 outline_size = 3
 use_filter = true
-extra_spacing_char = -8
-font_data = ExtResource( 11 )
+font_data = ExtResource( 29 )
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0823529, 0.0901961, 0.101961, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="Theme" id=19]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = ExtResource( 30 )
+Button/styles/focus = SubResource( 15 )
+Button/styles/hover = SubResource( 16 )
+Button/styles/normal = SubResource( 17 )
+Button/styles/pressed = SubResource( 18 )
 
 [node name="Game" type="Node"]
 
@@ -131,6 +179,7 @@ GameAnimationTreePath = NodePath("../AnimationTree")
 DebugLabelPath = NodePath("../CanvasLayer/GUI/DebugLabel")
 ScoreLabelPath = NodePath("../CanvasLayer/GUI/ScoreLabel")
 BestScoreLabelPath = NodePath("../CanvasLayer/GUI/BestScoreLabel")
+BestScoreOverLabelPath = NodePath("../CanvasLayer/GUI/GameOverScreen/PersonalBestLabel")
 BPMLabelPath = NodePath("../DisplayHandler/Doors/StageBG/BGControl/BPMLabel")
 GameOverScreenPath = NodePath("../CanvasLayer/GUI/GameOverScreen")
 isActive = false
@@ -195,9 +244,6 @@ text = "0 笑"
 align = 2
 valign = 2
 script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BestScoreLabel" type="Label" parent="CanvasLayer/GUI"]
 anchor_left = 1.0
@@ -214,9 +260,6 @@ custom_fonts/font = SubResource( 11 )
 text = "自己ベスト     0"
 align = 2
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubtitleLabel" type="Label" parent="CanvasLayer/GUI"]
 anchor_right = 1.0
@@ -226,9 +269,6 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
 align = 1
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 ASPTimedSingleNodePath = NodePath("../../../AudioPlayers/Gag")
 GameHandlerNodePath = NodePath("../../../GameHandler")
 
@@ -244,24 +284,24 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GameOverLabel" type="Label" parent="CanvasLayer/GUI/GameOverScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -238.5
-margin_top = -37.5
-margin_right = 238.5
-margin_bottom = 37.5
+margin_left = -292.0
+margin_top = -100.0
+margin_right = 292.0
+margin_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "ゲームオーバー"
+custom_fonts/font = SubResource( 14 )
+text = "LBL_GM_OVR"
+align = 1
 
 [node name="PersonalBestLabel" type="Label" parent="CanvasLayer/GUI/GameOverScreen"]
 visible = false
@@ -269,17 +309,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -136.5
-margin_top = 41.2374
-margin_right = 136.5
-margin_bottom = 84.2374
+margin_left = -198.0
+margin_top = -7.0
+margin_right = 198.0
+margin_bottom = 53.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_colors/font_color = Color( 1, 0.4, 0.4, 1 )
 custom_fonts/font = SubResource( 13 )
-text = "自己ベスト更新!!!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "LBL_NEW_HS"
+align = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/GUI/GameOverScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 19 )
+
+[node name="Button" type="Button" parent="CanvasLayer/GUI/GameOverScreen/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -139.0
+margin_top = -194.0
+margin_right = 139.0
+margin_bottom = -127.0
+grow_horizontal = 2
+text = "BTN_RESTART"
+script = ExtResource( 31 )
+action = "restart"
+
+[node name="Button3" type="Button" parent="CanvasLayer/GUI/GameOverScreen/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -139.0
+margin_top = -116.0
+margin_right = 139.0
+margin_bottom = -49.0
+grow_horizontal = 2
+text = "BTN_BCK"
+script = ExtResource( 31 )
+action = "ui_cancel"
 
 [editable path="DisplayHandler"]

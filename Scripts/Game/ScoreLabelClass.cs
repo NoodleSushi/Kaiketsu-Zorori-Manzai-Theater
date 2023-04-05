@@ -5,11 +5,16 @@ namespace Game
 {
     public class ScoreLabelClass : Label
     {
+        public override void _Ready()
+        {
+            Score = 0;
+        }
+
         public int Score
         {
             set
             {
-                Text = $"{value} 笑";
+                Text = string.Format(Tr("LBL_SCORE"), value);
             }
         }
     }

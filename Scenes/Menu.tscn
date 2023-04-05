@@ -1,19 +1,219 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Sprites/Menu/Noshishi.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Menu/Zorori.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Menu/Ishishi.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/bg.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/bg2.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Menu.gd" type="Script" id=6]
-[ext_resource path="res://Fonts/07YasashisaAntique.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Fonts/MenuCreditsFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Audio/menu.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sprites/Menu/Title.png" type="Texture" id=9]
+[ext_resource path="res://Audio/nose.wav" type="AudioStream" id=10]
+[ext_resource path="res://UIOptions/UIOptions.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Fonts/MenuNormalFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Fonts/MenuSmallFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://UIOptions/UIInputKey.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UIOptions/UIOptionsLang.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/OptionsHandler.gd" type="Script" id=16]
+[ext_resource path="res://UIOptions/UIInputCheck.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Fonts/MenuSettingsFont.tres" type="DynamicFont" id=18]
 
-[sub_resource type="DynamicFont" id=1]
-size = 64
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 7 )
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0823529, 0.0901961, 0.101961, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="Theme" id=19]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = ExtResource( 12 )
+Button/styles/focus = SubResource( 15 )
+Button/styles/hover = SubResource( 16 )
+Button/styles/normal = SubResource( 17 )
+Button/styles/pressed = SubResource( 18 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0.0823529, 0.0901961, 0.101961, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="Theme" id=20]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = ExtResource( 13 )
+Button/styles/focus = SubResource( 15 )
+Button/styles/hover = SubResource( 38 )
+Button/styles/normal = SubResource( 39 )
+Button/styles/pressed = SubResource( 40 )
+
+[sub_resource type="Theme" id=43]
+
+[sub_resource type="StyleBoxFlat" id=28]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.203922 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 0.34902 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxFlat" id=26]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.45098 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id=23]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.203922 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id=27]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.372549, 0.372549, 0.286275 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=33]
+
+[sub_resource type="StyleBoxEmpty" id=34]
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 1, 1, 1, 0.105882 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0, 0, 0, 0.45098 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id=37]
+
+[sub_resource type="Theme" id=22]
+Button/colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 0.658824 )
+Button/fonts/font = ExtResource( 18 )
+Button/styles/disabled = SubResource( 28 )
+Button/styles/focus = SubResource( 25 )
+Button/styles/hover = SubResource( 26 )
+Button/styles/normal = SubResource( 23 )
+Button/styles/pressed = SubResource( 27 )
+CheckBox/styles/disabled = SubResource( 29 )
+CheckBox/styles/focus = SubResource( 30 )
+CheckBox/styles/hover = SubResource( 31 )
+CheckBox/styles/hover_pressed = SubResource( 32 )
+CheckBox/styles/normal = SubResource( 33 )
+CheckBox/styles/pressed = SubResource( 34 )
+Label/fonts/font = ExtResource( 18 )
+MenuButton/fonts/font = ExtResource( 18 )
+OptionButton/fonts/font = ExtResource( 18 )
+PopupMenu/constants/vseparation = 0
+PopupMenu/fonts/font = ExtResource( 18 )
+PopupMenu/styles/hover = SubResource( 35 )
+PopupMenu/styles/panel = SubResource( 36 )
+PopupMenu/styles/separator = SubResource( 37 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -37,10 +237,26 @@ script = ExtResource( 6 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
+[node name="BGDim" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.611765 )
+
 [node name="GUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/GUI"]
+anchor_left = 0.194
+anchor_right = 0.806
+margin_left = -0.200012
+margin_top = 19.0
+margin_right = 0.19989
+margin_bottom = 161.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
 
 [node name="SnootButton" type="Button" parent="CanvasLayer/GUI"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -48,33 +264,233 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 63.0707
-margin_top = -40.5596
-margin_right = 112.071
-margin_bottom = 8.44043
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 61.0
+margin_top = -31.0
+margin_right = 110.0
+margin_bottom = 18.0
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/GUI"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -89.0
-margin_top = 112.665
-margin_right = 89.0
-margin_bottom = 183.665
-custom_fonts/font = SubResource( 1 )
+anchor_bottom = 1.0
+margin_left = -107.5
+margin_top = -164.0
+margin_right = 107.5
+margin_bottom = -97.0
+theme = SubResource( 19 )
 shortcut_in_tooltip = false
-text = "PLAY"
+text = "BTN_PLAY"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/GUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -107.5
+margin_top = -86.0
+margin_right = 107.5
+margin_bottom = -19.0
+theme = SubResource( 19 )
+shortcut_in_tooltip = false
+text = "BTN_OPT"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/GUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -45.0
+margin_right = 100.0
+margin_bottom = -8.0
+theme = SubResource( 20 )
+shortcut_in_tooltip = false
+text = "BTN_CRD"
+
+[node name="Credits" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Credits/CenterContainer"]
+margin_left = 100.0
+margin_top = 55.0
+margin_right = 700.0
+margin_bottom = 545.0
+rect_min_size = Vector2( 600, 490 )
+theme = SubResource( 43 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+
+Credits PlaceholderCredits Placeholder
+
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+"
+meta_underlined = false
+text = "Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+Credits Placeholder
+
+Credits PlaceholderCredits Placeholder
+
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+
+Credits Placeholder
+Credits Placeholder
+"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Credits"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -45.0
+margin_right = 100.0
+margin_bottom = -8.0
+theme = SubResource( 20 )
+shortcut_in_tooltip = false
+text = "BTN_BCK"
+
+[node name="Options" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 16 )
+
+[node name="OptionsSeparator" type="VBoxContainer" parent="CanvasLayer/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 117.0
+margin_top = 75.0
+margin_right = -117.0
+margin_bottom = -75.0
+theme = SubResource( 22 )
+
+[node name="OptionsList" type="VBoxContainer" parent="CanvasLayer/Options/OptionsSeparator"]
+margin_right = 566.0
+margin_bottom = 368.0
+size_flags_vertical = 3
+
+[node name="SettingLanguage" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 11 )]
+margin_right = 566.0
+margin_bottom = 37.0
+script = ExtResource( 15 )
+option_name = "lang"
+option_label = "SET_LANG"
+value_mode = 1
+options_typed = [ "en", "es", "fr", "it", "ja" ]
+options_display = [ "English", "Español", "Français", "Italiano", "日本語" ]
+
+[node name="SettingSlapMode" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 11 )]
+margin_top = 41.0
+margin_right = 566.0
+margin_bottom = 78.0
+option_name = "slap_mode"
+option_label = "SET_BUT"
+options_display = [ "SET_BUT_ONE", "SET_BUT_TWO", "SET_BUT_SIM" ]
+
+[node name="SettingKey1" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 14 )]
+margin_top = 82.0
+margin_right = 566.0
+margin_bottom = 119.0
+option_name = "key1"
+option_label = "SET_CTRL_KEYONE"
+action = "btn_primary"
+default_key = "Z"
+
+[node name="SettingKey2" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 14 )]
+margin_top = 123.0
+margin_right = 566.0
+margin_bottom = 160.0
+option_name = "key2"
+option_label = "SET_CTRL_KEYTWO"
+action = "btn_secondary"
+default_key = "X"
+
+[node name="SettingSub" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
+margin_top = 164.0
+margin_right = 566.0
+margin_bottom = 193.0
+option_name = "captions"
+option_label = "SET_SUB"
+
+[node name="SettingFullScr" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
+margin_top = 197.0
+margin_right = 566.0
+margin_bottom = 226.0
+option_name = "fullscreen"
+option_label = "SET_FULLSCR"
+
+[node name="SettingHS" type="Button" parent="CanvasLayer/Options/OptionsSeparator/OptionsList"]
+visible = false
+margin_top = 197.0
+margin_right = 566.0
+margin_bottom = 232.0
+text = "SET_RESET_HS"
+
+[node name="RestoreDefault" type="Button" parent="CanvasLayer/Options/OptionsSeparator"]
+margin_top = 372.0
+margin_right = 566.0
+margin_bottom = 409.0
+text = "SET_DEF"
+
+[node name="ApplySettings" type="Button" parent="CanvasLayer/Options/OptionsSeparator"]
+margin_top = 413.0
+margin_right = 566.0
+margin_bottom = 450.0
+text = "SET_APPLY"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Options"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -45.0
+margin_right = 100.0
+margin_bottom = -8.0
+theme = SubResource( 20 )
+shortcut_in_tooltip = false
+text = "BTN_BCK"
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Background"]
-offset = Vector2( 0, -2 )
+[node name="CameraParent" type="Node2D" parent="Background"]
+
+[node name="Camera2D" type="Camera2D" parent="Background/CameraParent"]
+position = Vector2( 0, -43 )
+offset = Vector2( 0, 3 )
 current = true
-zoom = Vector2( 0.821, 0.821 )
+zoom = Vector2( 0.8, 0.8 )
 script = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Background"]
@@ -94,7 +510,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.95
 
 [node name="IshishiSprite" type="Sprite" parent="Background/IshishiCanvasLayer"]
-position = Vector2( 153.5, -44.015 )
+position = Vector2( 153.5, 20.0178 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 
@@ -105,7 +521,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.965
 
 [node name="NoshishiSprite" type="Sprite" parent="Background/NoshishiCanvasLayer"]
-position = Vector2( -185, -56.5 )
+position = Vector2( -185, 8.58353 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 
@@ -116,7 +532,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 1.25
 
 [node name="ZororiSprite" type="Sprite" parent="Background/ZororiCanvasLayer"]
-position = Vector2( -15.5, 22 )
+position = Vector2( -15.5, 36.25 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
@@ -125,5 +541,14 @@ stream = ExtResource( 8 )
 volume_db = -24.0
 autoplay = true
 
+[node name="AudioBoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -5.143
+
 [connection signal="pressed" from="CanvasLayer/GUI/SnootButton" to="." method="_on_SnootButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GUI/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="meta_clicked" from="CanvasLayer/Credits/CenterContainer/RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="pressed" from="CanvasLayer/Credits/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/BackButton" to="." method="_on_BackButton_pressed"]

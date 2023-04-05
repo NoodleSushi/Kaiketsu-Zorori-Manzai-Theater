@@ -10,13 +10,15 @@ namespace Game
         const string KEY_SCORE = "score";
         private static int BestScore = 0;
 
-        public static void SaveScore(int Score)
+        public static bool SaveScore(int Score)
         {
+            bool isNewScore = Score > BestScore;
             ConfigFile Config = new ConfigFile();
             Config.Load(SAVE_DIRECTORY);
             BestScore = Math.Max(Score, BestScore);
             Config.SetValue(SECTION_MAIN, KEY_SCORE, BestScore);
             Config.Save(SAVE_DIRECTORY);
+            return isNewScore;
         }
 
         public static int GetScore()

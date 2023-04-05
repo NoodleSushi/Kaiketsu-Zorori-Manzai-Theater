@@ -9,6 +9,9 @@ namespace Game
     public class GameHandler : Node
     {
         const float MAIN_BPM = 98;
+        const string SECTION = "settings";
+        const string CFG_PATH = "user://settings.cfg";
+        const string KEY = "slap_mode";
 
         [Signal] public delegate void BGMStageGenerated();
         [Signal] public delegate void GameOvered();
@@ -22,9 +25,11 @@ namespace Game
         [Export] public NodePath DebugLabelPath; private Label DebugLabel;
         [Export] public NodePath ScoreLabelPath; private ScoreLabelClass ScoreLabel;
         [Export] public NodePath BestScoreLabelPath; private BestScoreLabelClass BestScoreLabel;
+        [Export] public NodePath BestScoreOverLabelPath; private Label BestScoreOverLabel;
         [Export] public NodePath BPMLabelPath; private Label BPMLabel;
         [Export] public NodePath GameOverScreenPath; private Control GameOverScreen;
         [Export] public bool isActive = true;
+        public int SlapMode = 0;
 
         readonly private GagSystemClass GagSystem = new GagSystemClass();
         readonly private PoolTimingAnalyzerClass PoolTimingAnalyzer = new PoolTimingAnalyzerClass();
@@ -57,42 +62,49 @@ namespace Game
             get => bestScore;
         }
 
-        public override void _Ready()
+        private void GetNodeReferences()
         {
             BgmAudioPlayer = GetNode<AudioPlayer.Bgm>(BgmAudioPlayerPath);
+            GagAudioPlayer = GetNode<AudioPlayer.Gag>(GagAudioPlayerPath);
+            AplAudioPlayer = GetNode<AudioPlayer.Apl>(AplAudioPlayerPath);
+            PlrAudioPlayer = GetNode<AudioPlayer.Plr>(PlrAudioPlayerPath);
+            GameOverAudioPlayer = GetNode<AudioStreamPlayer>(GameOverAudioPlayerPath);
+            @GameAnimationTree = GetNode<GameAnimationTree>(GameAnimationTreePath);
+            DebugLabel = GetNode<Label>(DebugLabelPath);
+            ScoreLabel = GetNode<ScoreLabelClass>(ScoreLabelPath);
+            BestScoreLabel = GetNode<BestScoreLabelClass>(BestScoreLabelPath);
+            BestScoreOverLabel = GetNode<Label>(BestScoreOverLabelPath);
+            BPMLabel = GetNode<Label>(BPMLabelPath);
+            GameOverScreen = GetNode<Control>(GameOverScreenPath);
+        }
+
+        public override void _Ready()
+        {
+            ConfigFile cfg = new ConfigFile();
+            cfg.Load(CFG_PATH);
+            SlapMode = (int) cfg.GetValue(SECTION, KEY, 0);
+            if (SlapMode < 0 || SlapMode > 2)
+                SlapMode = 0;
+
+            GetNodeReferences();
+
             BgmAudioPlayer.BPM = MAIN_BPM;
             BgmAudioPlayer.Connect("finished", this, nameof(_on_BgmPlayer_finished));
 
-            GagAudioPlayer = GetNode<AudioPlayer.Gag>(GagAudioPlayerPath);
             GagAudioPlayer.MusicPlayer = BgmAudioPlayer;
             GagAudioPlayer.AllocatedTime = 0;
             GagAudioPlayer.TakeOverWhilePlaying = true;
 
-            AplAudioPlayer = GetNode<AudioPlayer.Apl>(AplAudioPlayerPath);
             AplAudioPlayer.MusicPlayer = BgmAudioPlayer;
             AplAudioPlayer.AllocatedTime = 0;
             AplAudioPlayer.TakeOverWhilePlaying = true;
 
-            PlrAudioPlayer = GetNode<AudioPlayer.Plr>(PlrAudioPlayerPath);
-            
-            GameOverAudioPlayer = GetNode<AudioStreamPlayer>(GameOverAudioPlayerPath);
-
-            @GameAnimationTree = GetNode<GameAnimationTree>(GameAnimationTreePath);
             @GameAnimationTree.SetBgmPlayer(BgmAudioPlayer);
             @GameAnimationTree.Active = true;
             @GameAnimationTree.PlayIntro();
             @GameAnimationTree.Connect(nameof(@GameAnimationTree.AnimStateChanged), this, nameof(_on_GameAnimationTree_AnimStateChanged));
 
-            DebugLabel = GetNode<Label>(DebugLabelPath);
-
-            ScoreLabel = GetNode<ScoreLabelClass>(ScoreLabelPath);
-            
-            BestScoreLabel = GetNode<BestScoreLabelClass>(BestScoreLabelPath);
             BestScore = ConfigHandler.GetScore();
-
-            BPMLabel = GetNode<Label>(BPMLabelPath);
-
-            GameOverScreen = GetNode<Control>(GameOverScreenPath);
 
             GagSystem.Reset();
         }
@@ -115,21 +127,41 @@ namespace Game
             float inputBeat = (float) RS.GetASPBeatScaled(MAIN_BPM, BgmAudioPlayer);
             bool isFail = GagSystem.Beat2IsFailureGag(inputBeat);
             bool shallDetectButton = inputBeat > 8;
-            bool isButtonPressed;
+            bool isButtonPressed = false;
             bool isButtonValid = true;
 
-            if (!isFail)
-            {
-                isButtonPressed = Input.IsActionJustPressed("btn_primary") || Input.IsActionJustPressed("btn_secondary");
-                isButtonValid = !Input.IsActionJustPressed("btn_secondary");
-            }
-            else
-            {
-                var comboStatus = bcd.GetComboStatus();
-                isButtonPressed = comboStatus.IsDetected;
-                if (isButtonPressed)
-                    isButtonValid = comboStatus.IsSuccessful;
-            }
+            switch (SlapMode)
+                {
+                    case 0:
+                        isButtonPressed = Input.IsActionJustPressed("btn_primary");
+                        break;
+                    case 1:
+                        if (!isFail)
+                        {
+                            isButtonPressed = Input.IsActionJustPressed("btn_primary");
+                            isButtonValid = !Input.IsActionJustPressed("btn_secondary");
+                        }
+                        else
+                        {
+                            isButtonPressed = Input.IsActionJustPressed("btn_secondary");
+                            isButtonValid = !Input.IsActionJustPressed("btn_primary");
+                        }
+                        break;
+                    case 2:
+                        if (!isFail)
+                        {
+                            isButtonPressed = Input.IsActionJustPressed("btn_primary");
+                            isButtonValid = !Input.IsActionJustPressed("btn_secondary");
+                        }
+                        else
+                        {
+                            var comboStatus = bcd.GetComboStatus();
+                            isButtonPressed = comboStatus.IsDetected;
+                            if (isButtonPressed)
+                                isButtonValid = comboStatus.IsSuccessful;
+                        }
+                        break;
+                }
 
             bool isSafe = true;
             bool isPoint = false;
@@ -191,7 +223,8 @@ namespace Game
             PlrAudioPlayer.Stop();
             BgmAudioPlayer.Stop();
             @GameAnimationTree.ClearAll();
-            ConfigHandler.SaveScore(BestScore);
+            bool isNewBestScore = ConfigHandler.SaveScore(BestScore);
+            BestScoreOverLabel.Visible = isNewBestScore;
             @GameAnimationTree.PlayGameOver();
             EmitSignal(nameof(GameOvered));
         }

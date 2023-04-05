@@ -6,6 +6,9 @@ namespace Game
 {
     public class SubtitleLabelClass : Label
     {
+        const string SECTION = "settings";
+        const string CFG_PATH = "user://settings.cfg";
+
         [Export] public NodePath ASPTimedSingleNodePath;
         [Export] public NodePath GameHandlerNodePath;
         private ASPTimedSingle @ASPTimedSingle;
@@ -14,6 +17,10 @@ namespace Game
 
         public override void _Ready()
         {
+            ConfigFile cfg = new ConfigFile();
+            cfg.Load(CFG_PATH);
+            Visible = TranslationServer.GetLocale() == "ja" && (bool)cfg.GetValue(SECTION, "captions", false);
+
             @ASPTimedSingle = GetNode<ASPTimedSingle>(ASPTimedSingleNodePath);
             @ASPTimedSingle.Connect(nameof(@ASPTimedSingle.NotifiedPlayback), this, nameof(_on_ASPTimedSingle_NotifiedPlayback));
 

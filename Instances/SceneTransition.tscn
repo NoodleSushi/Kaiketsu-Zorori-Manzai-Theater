@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Instances/SceneTransition.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Misc/Gradient.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Exit"
@@ -14,7 +15,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 0.153893, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ 1.0, -0.1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Control/ColorRect:anchor_bottom")
@@ -41,6 +42,30 @@ tracks/2/keys = {
 "args": [ "transition_closed" ],
 "method": "emit_signal"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Control:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 0.153893, 1 ),
+"update": 0,
+"values": [ 1.0, -0.1 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/Control:anchor_bottom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 0.153893, 1 ),
+"update": 0,
+"values": [ 1.0, -0.1 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -93,7 +118,31 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 1 ),
 "transitions": PoolRealArray( 0.153893, 0.153893, 0.965936 ),
 "update": 0,
-"values": [ 1.0, 1.0, 0.0 ]
+"values": [ 1.0, 1.0, -0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Control:anchor_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 0.153893, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, -0.1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Control:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 0.153893, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, -0.1 ]
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
@@ -116,5 +165,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
+
+[node name="Control" type="Control" parent="Control"]
+anchor_top = -0.1
+anchor_right = 1.0
+anchor_bottom = -0.1
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 60.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+flip_v = true
 
 [connection signal="transition_closed" from="." to="." method="_on_SceneTransition_transition_closed"]

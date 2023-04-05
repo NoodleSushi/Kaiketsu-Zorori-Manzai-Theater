@@ -2045,12 +2045,14 @@ animations = [ {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 67 )
+volume_db = 8.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 65 )
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 67 )
+volume_db = 8.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
