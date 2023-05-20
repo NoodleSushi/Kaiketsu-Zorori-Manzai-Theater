@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Scripts/Game/GameHandler.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Game/AudioPlayer/Bgm.cs" type="Script" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://Fonts/MPLUSRounded1c-Black.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://Fonts/MenuNormalFont.tres" type="DynamicFont" id=30]
 [ext_resource path="res://UIOptions/Button2Action.gd" type="Script" id=31]
+[ext_resource path="res://Scenes/BeatIndicator.cs" type="Script" id=32]
+[ext_resource path="res://Sprites/BeatIndicator/pointer.png" type="Texture" id=33]
 
 [sub_resource type="AnimationNodeBlendTree" id=1]
 
@@ -177,6 +179,7 @@ AplAudioPlayerPath = NodePath("../AudioPlayers/Apl")
 GameOverAudioPlayerPath = NodePath("../AudioPlayers/GameOver")
 GameAnimationTreePath = NodePath("../AnimationTree")
 DebugLabelPath = NodePath("../CanvasLayer/GUI/DebugLabel")
+BeatIndicatorPath = NodePath("../CanvasLayer/GUI/BeatIndicator")
 ScoreLabelPath = NodePath("../CanvasLayer/GUI/ScoreLabel")
 BestScoreLabelPath = NodePath("../CanvasLayer/GUI/BestScoreLabel")
 BestScoreOverLabelPath = NodePath("../CanvasLayer/GUI/GameOverScreen/PersonalBestLabel")
@@ -217,7 +220,7 @@ volume_db = -10.0
 [node name="Pot" parent="DisplayHandler/Actors/ZororiSprite" index="4"]
 frame = 5
 
-[node name="Camera2D" parent="DisplayHandler" index="17"]
+[node name="Camera2D" parent="DisplayHandler" index="16"]
 position = Vector2( 0, -597.726 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -226,9 +229,20 @@ layer = 2
 [node name="GUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="BeatIndicator" type="Control" parent="CanvasLayer/GUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = -46.0
+margin_bottom = -46.0
+script = ExtResource( 32 )
+IndicatorSize = Vector2( 320, 32 )
+PointerTex = ExtResource( 33 )
+BGColor = Color( 0, 0, 0, 0.784314 )
+BeatColor = Color( 1, 1, 1, 0.643137 )
+IndicatorColor = Color( 1, 1, 1, 0.541176 )
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/GUI"]
 anchor_left = 1.0

@@ -383,7 +383,6 @@ shortcut_in_tooltip = false
 text = "BTN_BCK"
 
 [node name="Options" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 16 )
@@ -438,17 +437,24 @@ option_label = "SET_CTRL_KEYTWO"
 action = "btn_secondary"
 default_key = "X"
 
-[node name="SettingSub" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
+[node name="SettingGuide" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
 margin_top = 164.0
 margin_right = 566.0
 margin_bottom = 193.0
+option_name = "indicator"
+option_label = "SET_GUIDE"
+
+[node name="SettingSub" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
+margin_top = 197.0
+margin_right = 566.0
+margin_bottom = 226.0
 option_name = "captions"
 option_label = "SET_SUB"
 
 [node name="SettingFullScr" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 17 )]
-margin_top = 197.0
+margin_top = 230.0
 margin_right = 566.0
-margin_bottom = 226.0
+margin_bottom = 259.0
 option_name = "fullscreen"
 option_label = "SET_FULLSCR"
 

@@ -9,8 +9,13 @@ namespace Game
         public const float DIFFERENCE_RANGE_MIN = -0.125f;
         public const float DIFFERENCE_RANGE_MAX = 0.1875f;
 
-        private readonly List<float> InputBeatList = new List<float>();
-        private List<float> MissionBeatList = new List<float>();
+        public readonly List<float> InputBeatList = new List<float>();
+        
+        private List<float> _missionBeatList = new List<float>();
+        public List<float> MissionBeatList {
+            private set => _missionBeatList = value;
+            get => _missionBeatList;
+        }
         private List<bool> IsPointGivenList = new List<bool>();
 
         public bool AppendInputTime(float inputTime)

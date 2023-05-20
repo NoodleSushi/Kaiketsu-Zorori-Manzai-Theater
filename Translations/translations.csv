@@ -157,3 +157,4 @@ SET_FULLSCR,Fullscreen,フルスクリーン,Pantalla completa,全屏模式 ,Sch
 SET_APPLY,Apply Settings,設定を適用する,Aplicar configuración,应用设置 ,Applica impostazioni ,Appliquer les paramètres
 SET_CTRL_KEYDET,Press a key...,キーを押してください,Presione una tecla...,请按键 ,Premere un tasto... ,Appuyez sur une touche…
 SET_DEF,Restore Default,デフォルトに戻す,Restaurar valores predeterminados,恢复默认 ,Ripristina predefiniti,Réinitialiser les paramètres 
+SET_GUIDE,Rhythm Indicator,ビートガイド,Indicador de ritmo ,,Guida al ritmo ,Guide de rythme 

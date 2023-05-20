@@ -23,6 +23,7 @@ namespace Game
         [Export] public NodePath GameOverAudioPlayerPath; private AudioStreamPlayer GameOverAudioPlayer;
         [Export] public NodePath GameAnimationTreePath; private GameAnimationTree @GameAnimationTree;
         [Export] public NodePath DebugLabelPath; private Label DebugLabel;
+        [Export] public NodePath BeatIndicatorPath; private BeatIndicator BeatIndicator;
         [Export] public NodePath ScoreLabelPath; private ScoreLabelClass ScoreLabel;
         [Export] public NodePath BestScoreLabelPath; private BestScoreLabelClass BestScoreLabel;
         [Export] public NodePath BestScoreOverLabelPath; private Label BestScoreOverLabel;
@@ -71,6 +72,7 @@ namespace Game
             GameOverAudioPlayer = GetNode<AudioStreamPlayer>(GameOverAudioPlayerPath);
             @GameAnimationTree = GetNode<GameAnimationTree>(GameAnimationTreePath);
             DebugLabel = GetNode<Label>(DebugLabelPath);
+            BeatIndicator = GetNode<BeatIndicator>(BeatIndicatorPath);
             ScoreLabel = GetNode<ScoreLabelClass>(ScoreLabelPath);
             BestScoreLabel = GetNode<BestScoreLabelClass>(BestScoreLabelPath);
             BestScoreOverLabel = GetNode<Label>(BestScoreOverLabelPath);
@@ -104,6 +106,8 @@ namespace Game
             @GameAnimationTree.PlayIntro();
             @GameAnimationTree.Connect(nameof(@GameAnimationTree.AnimStateChanged), this, nameof(_on_GameAnimationTree_AnimStateChanged));
 
+            BeatIndicator.PoolTimingRef = PoolTimingAnalyzer;
+
             BestScore = ConfigHandler.GetScore();
 
             GagSystem.Reset();
@@ -125,8 +129,11 @@ namespace Game
                 return;
 
             float inputBeat = (float) RS.GetASPBeatScaled(MAIN_BPM, BgmAudioPlayer);
+            BeatIndicator.CurrentBeats = inputBeat;
             bool isFail = GagSystem.Beat2IsFailureGag(inputBeat);
             bool shallDetectButton = inputBeat > 8;
+            if (!shallDetectButton)
+                return;
             bool isButtonPressed = false;
             bool isButtonValid = true;
 
@@ -166,13 +173,12 @@ namespace Game
             bool isSafe = true;
             bool isPoint = false;
 
-            if (shallDetectButton && isButtonPressed && isButtonValid)
+            if (isButtonPressed && isButtonValid)
                 isPoint = PoolTimingAnalyzer.AppendInputTime(inputBeat);
             
-            if (shallDetectButton)
-                isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat) && isButtonValid;
+            isSafe = PoolTimingAnalyzer.IsAcceptable(inputBeat) && isButtonValid;
 
-            if (shallDetectButton && isButtonPressed && isSafe)
+            if (isButtonPressed && isSafe)
             {
                 if (isPoint)
                     CurrentScore += 1;
