@@ -1,4 +1,4 @@
-# Kaiketsu-Zorori-Manzai-Theater
+# Kaiketsu Zorori: Manzai Theater
 An unofficial fangame spoof of Kaiketsu Zorori (Manga and Anime Series) and the Manzai Endless Game from Minna no Rhythm Tengoku!
 
 ![Title Screen](https://github.com/NoodleSushi/Kaiketsu-Zorori-Manzai-Theater/assets/34954180/e261483c-e3ec-4a24-9b9b-a682a6674102)
