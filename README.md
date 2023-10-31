@@ -15,3 +15,7 @@ Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs
 - [Input Helper 2 addon by Nathan Hoad](https://github.com/nathanhoad/godot_input_helper).
 - The game is inspired by the Anime Series "Kaiketsu Zorori."
 - The menu soundtrack, "Hussle," was composed by Kohei Tanaka and performed by Koichi Yamadera from "Kaiketsu Zorori."
+
+# Notes
+- Localized in English, Japanese, Spanish, Italian, and French.
+  - Chinese localization is available in the source code but is currently disabled due to font display limitations.
