@@ -6,6 +6,10 @@ An unofficial fangame spoof of Kaiketsu Zorori (Manga and Anime Series) and the 
 ![Title Screen](https://github.com/NoodleSushi/Kaiketsu-Zorori-Manzai-Theater/assets/34954180/e261483c-e3ec-4a24-9b9b-a682a6674102)
 ![Gameplay](https://github.com/NoodleSushi/Kaiketsu-Zorori-Manzai-Theater/assets/34954180/fdacdc67-4cf9-4d60-98a8-24fa8b89b7b4)
 
+# Developer Notes
+- This game has localization in English, Japanese, Spanish, Italian, and French.
+  - Chinese localization is available in the source code but is currently disabled due to font display limitations.
+
 # Project Setup
 Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs.godotengine.org/en/3.5/tutorials/scripting/c_sharp/c_sharp_basics.html)
 
@@ -15,7 +19,3 @@ Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs
 - [Input Helper 2 addon by Nathan Hoad](https://github.com/nathanhoad/godot_input_helper).
 - The game is inspired by the Anime Series "Kaiketsu Zorori."
 - The menu soundtrack, "Hussle," was composed by Kohei Tanaka and performed by Koichi Yamadera from "Kaiketsu Zorori."
-
-# Notes
-- Localized in English, Japanese, Spanish, Italian, and French.
-  - Chinese localization is available in the source code but is currently disabled due to font display limitations.
