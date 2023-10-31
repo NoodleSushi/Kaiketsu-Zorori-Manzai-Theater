@@ -9,6 +9,8 @@ An unofficial fangame spoof of Kaiketsu Zorori (Manga and Anime Series) and the 
 # Developer Notes
 - This game has localization in English, Japanese, Spanish, Italian, and French.
   - Chinese localization is available in the source code but is currently disabled due to font display limitations.
+- The option for "Oyaji Gag" subtitles is available in Japanese, but it might contain inaccuracies.
+- I've hidden an Easter egg in the main menu! ;3
 
 # Project Setup
 Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs.godotengine.org/en/3.5/tutorials/scripting/c_sharp/c_sharp_basics.html)
