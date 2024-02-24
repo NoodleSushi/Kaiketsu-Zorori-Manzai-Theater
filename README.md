@@ -20,4 +20,4 @@ Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs
 - Audio assets, a few art assets, and the game are based on the minigame "Manzai Birds" from "Minna no Rhythm Tengoku," published by Nintendo.
 - [Input Helper 2 addon by Nathan Hoad](https://github.com/nathanhoad/godot_input_helper).
 - The game is inspired by the Anime Series "Kaiketsu Zorori."
-- The menu soundtrack, "Hussle," was composed by Kohei Tanaka and performed by Koichi Yamadera from "Kaiketsu Zorori."
+- The menu soundtrack, "Hussle," was composed by Kohei Tanaka and originally performed by Koichi Yamadera from "Kaiketsu Zorori."
