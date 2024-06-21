@@ -13,11 +13,12 @@ An unofficial fangame spoof of Kaiketsu Zorori (Manga and Anime Series) and the 
 - I've hidden an Easter egg in the main menu! ;3
 
 # Project Setup
-Install the latest Godot Engine .NET 3.5 release [and setup for C#](https://docs.godotengine.org/en/3.5/tutorials/scripting/c_sharp/c_sharp_basics.html)
+Install the latest [Godot Engine .NET 3.5.x](https://godotengine.org/download/archive/3.5.3-stable/) release and [setup for C#](https://docs.godotengine.org/en/3.5/tutorials/scripting/c_sharp/c_sharp_basics.html)
 
 # Credits
 - Art assets were created by a friend of mine, [Kemono Haru](https://twitter.com/Kemono_Haru)!
+- Special thanks to [ひなめが≒日向眼鏡](https://twitter.com/hinamega) (@hinamega) for [suggesting clearer Japanese labels for the game modes](https://x.com/hinamega/status/1643284576054444032).
+- [Input Helper 2 addon](https://github.com/nathanhoad/godot_input_helper) by [Nathan Hoad](https://github.com/nathanhoad/).
 - Audio assets, a few art assets, and the game are based on the minigame "Manzai Birds" from "Minna no Rhythm Tengoku," published by Nintendo.
-- [Input Helper 2 addon by Nathan Hoad](https://github.com/nathanhoad/godot_input_helper).
 - The game is inspired by the Anime Series "Kaiketsu Zorori."
 - The menu soundtrack, "Hussle," was composed by Kohei Tanaka and originally performed by Koichi Yamadera from "Kaiketsu Zorori."
