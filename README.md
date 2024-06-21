@@ -17,7 +17,7 @@ Install the latest [Godot Engine .NET 3.5.x](https://godotengine.org/download/ar
 
 # Credits
 - Art assets were created by a friend of mine, [Kemono Haru](https://twitter.com/Kemono_Haru)!
-- Special thanks to [ひなめが≒日向眼鏡](https://twitter.com/hinamega) (@hinamega) for [suggesting clearer Japanese labels for the game modes](https://x.com/hinamega/status/1643284576054444032).
+- Special thanks to [ひなめが≒日向眼鏡](https://twitter.com/hinamega) (@hinamega) for [suggesting clearer Japanese labels for the game input modes](https://x.com/hinamega/status/1643284576054444032).
 - [Input Helper 2 addon](https://github.com/nathanhoad/godot_input_helper) by [Nathan Hoad](https://github.com/nathanhoad/).
 - Audio assets, a few art assets, and the game are based on the minigame "Manzai Birds" from "Minna no Rhythm Tengoku," published by Nintendo.
 - The game is inspired by the Anime Series "Kaiketsu Zorori."
