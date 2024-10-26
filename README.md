@@ -7,9 +7,15 @@ An unofficial fangame spoof of Kaiketsu Zorori (Manga and Anime Series) and the 
 ![Gameplay](https://github.com/NoodleSushi/Kaiketsu-Zorori-Manzai-Theater/assets/34954180/fdacdc67-4cf9-4d60-98a8-24fa8b89b7b4)
 
 # Developer Notes
-- This game has localization in English, Japanese, Spanish, Italian, and French.
-  - Chinese localization is available in the source code but is currently disabled due to font display limitations.
-- The option for "Oyaji Gag" subtitles is available in Japanese, but it might contain inaccuracies.
+- This game has localization for the following languages:
+  - English 
+  - Spanish (Español)
+  - French (Français)
+  - Italian (Italiano)
+  - Japanese (日本語)
+  - Simplified Chinese (汉语)
+  - Traditional Chinese (國語)
+- The option for "Oyaji Gag" subtitles is available in Japanese, but might contain inaccuracies.
 - I've hidden an Easter egg in the main menu! ;3
 
 # Project Setup
