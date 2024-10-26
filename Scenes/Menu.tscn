@@ -408,8 +408,8 @@ script = ExtResource( 15 )
 option_name = "lang"
 option_label = "SET_LANG"
 value_mode = 1
-options_typed = [ "en", "es", "fr", "it", "ja" ]
-options_display = [ "English", "Español", "Français", "Italiano", "日本語" ]
+options_typed = [ "en", "es", "fr", "it", "ja", "zh_CN", "zh_TW" ]
+options_display = [ "English", "Español", "Français", "Italiano", "日本語", "汉语", "國語" ]
 
 [node name="SettingSlapMode" parent="CanvasLayer/Options/OptionsSeparator/OptionsList" instance=ExtResource( 11 )]
 margin_top = 41.0

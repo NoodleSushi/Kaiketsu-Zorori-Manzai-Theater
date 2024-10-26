@@ -90,7 +90,11 @@ btn_secondary={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/translations.en.translation", "res://Translations/translations.ja.translation", "res://Translations/translations.es.translation", "res://Translations/translations.zh.translation", "res://Translations/translations.fr.translation", "res://Translations/translations.it.translation" )
+translations=PoolStringArray( "res://Translations/translations.en.translation", "res://Translations/translations.ja.translation", "res://Translations/translations.es.translation", "res://Translations/translations.fr.translation", "res://Translations/translations.it.translation", "res://Translations/translations.zh_CN.translation", "res://Translations/translations.zh_TW.translation" )
+locale_filter=[ 0, [  ] ]
+translation_remaps={
+"res://Fonts/JapFont.tres": PoolStringArray( "res://Fonts/ZhFont.tres:zh_CN", "res://Fonts/ZhFont.tres:zh_TW" )
+}
 
 [mono]
 

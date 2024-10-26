@@ -1,10 +1,10 @@
-id,en,ja,es,zh,it,fr
-BTN_PLAY,PLAY,スタート,JUGAR,开始,GIOCA,JOUER
-BTN_OPT,OPTIONS,設定,OPCIONES,选项 ,OPZIONI,OPTIONS
-BTN_CRD,CREDITS,クレジット,CRÉDITOS,制作人员 ,CREDITI,CRÉDITS
-BTN_BCK,BACK,戻る,ATRÁS,返回 ,INDIETRO,RETOUR
-BTN_EXIT,QUIT,終了する,SALIR,退出 ,ESCI,QUITTER
-BTN_RESTART,RESTART,リスタート,REINICIAR,重新开始 ,RIAVVIA,RECOMMENCER
+id,en,ja,es,zh_CN,zh_TW,it,fr
+BTN_PLAY,PLAY,スタート,JUGAR,开始,開始,GIOCA,JOUER
+BTN_OPT,OPTIONS,設定,OPCIONES,选项,選項,OPZIONI,OPTIONS
+BTN_CRD,CREDITS,クレジット,CRÉDITOS,制作人员,製作人員,CREDITI,CRÉDITS
+BTN_BCK,BACK,戻る,ATRÁS,返回,返回,INDIETRO,RETOUR
+BTN_EXIT,QUIT,終了する,SALIR,退出,退出,ESCI,QUITTER
+BTN_RESTART,RESTART,リスタート,REINICIAR,重新开始,重新開始,RIAVVIA,RECOMMENCER
 TXT_CREDITS,"[center]【Credits】
 
 Programmer
@@ -93,7 +93,29 @@ De ""Zorori el Extraordinario""","[center]【制作人员】
 《ハッスル》
 音乐：田中公平
 演唱：山寺宏一
-出自《怪杰佐罗力》","[center]【Crediti】
+出自《怪杰佐罗力》","[center]【製作人員】
+
+程式設計
+[url=https://twitter.com/Noodle_Sushi][font=res://Fonts/BBCodeAlign.tres][img=28]res://Sprites/twitter.png[/img][/font] @Noodle_Sushi[/url]
+
+美術
+[url=https://twitter.com/Kemono_Haru][font=res://Fonts/BBCodeAlign.tres][img=28]res://Sprites/twitter.png[/img][/font] @Kemono_Haru[/url]
+
+動畫師
+[url=https://twitter.com/Kemono_Haru][font=res://Fonts/BBCodeAlign.tres][img=28]res://Sprites/twitter.png[/img][/font] @Kemono_Haru[/url]
+
+原創遊戲
+《節奏天國》
+由任天堂發行
+
+動畫
+《怪傑佐羅力》
+
+選單音樂
+《ハッスル》
+音樂：田中公平
+演唱：山寺宏一
+出自《怪傑佐羅力》","[center]【Crediti】
 
 Programmatore
 [url=https://twitter.com/Noodle_Sushi][font=res://Fonts/BBCodeAlign.tres][img=28]res://Sprites/twitter.png[/img][/font] @Noodle_Sushi[/url]
@@ -138,23 +160,23 @@ Bande-son du menu
 Musique de Kohei Tanaka
 Interprété par Koichi Yamadera
 De ""Zorori le Magnifique"""
-LBL_RECORD,"Record:    {0,2}","自己ベスト    {0,2}","Marca personal    {0,2}","个人最佳    {0,2}","Record personale    {0,2}","Record personnel    {0,2}"
-LBL_GM_OVR,Game Over,ゲームオーバー,Se acabó,游戏结束,Fine del gioco,Partie terminée
-LBL_NEW_HS,New Record!,自己ベスト更新!!!,¡Nuevo récord!,新纪录诞生!!!,Nuovo record!,Nouveau record!
-LBL_SCORE,{0},{0} 笑,{0},{0},{0},{0}
-SET_LANG,Language,言語,Idioma,语言 ,Idioma,Idioma
-SET_SUB,Subtitles,キャプション,Subtítulos,,Subtítulos,
-SET_BUT,Comeback Mode,ツッコミモード,Modo de Respuestas Agudas ,还嘴模式,Modalità Obiezione,Mode Répartie 
-SET_BUT_ONE,Primary Key,メインキー ,Tecla principal,主键 ,Tasto principale,Touche principale
-SET_BUT_TWO,Secondary Key,サブキー,Tecla secundario,辅键 ,Tasto secondario,Touche secondaire
-SET_BUT_SIM,Primary Key + Secondary Key,メインキー + サブキー,Tecla principal + Tecla secundario,主键 + 辅键 ,Tasto principale + Tasto secondario,Touche principale + Touche secondaire
-SET_CTRL_KEYONE,Primary Key,メインキー ,Tecla principal,主键 ,Tasto principale,Touche principale
-SET_CTRL_KEYTWO,Secondary Key,サブキー,Tecla secundario,辅键 ,Tasto secondario,Touche secondaire
-SET_CTRL_BTNONE,Primary Button,メインボタン ,Botón principal,,Pulsante principale,Bouton principal
-SET_CTRL_BTNTWO,Secondary Button,サブボタン ,Botón secundario,,Pulsante secondario,Bouton secondaire
-SET_RESET_HS,Reset Highscore,ハイスコアリセット,Reiniciar máximo,,Ripristina punteggio massimo,Réinitialiser le score maximal
-SET_FULLSCR,Fullscreen,フルスクリーン,Pantalla completa,全屏模式 ,Schermo intero ,Plein écran
-SET_APPLY,Apply Settings,設定を適用する,Aplicar configuración,应用设置 ,Applica impostazioni ,Appliquer les paramètres
-SET_CTRL_KEYDET,Press a key...,キーを押してください,Presione una tecla...,请按键 ,Premere un tasto... ,Appuyez sur une touche…
-SET_DEF,Restore Default,デフォルトに戻す,Restaurar valores predeterminados,恢复默认 ,Ripristina predefiniti,Réinitialiser les paramètres 
-SET_GUIDE,Rhythm Indicator,ビートガイド,Indicador de ritmo ,,Guida al ritmo ,Guide de rythme 
+LBL_RECORD,"Record:    {0,2}","自己ベスト    {0,2}","Marca personal    {0,2}","个人最佳    {0,2}","個人最佳    {0,2}","Record personale    {0,2}","Record personnel    {0,2}"
+LBL_GM_OVR,Game Over,ゲームオーバー,Se acabó,游戏结束,遊戲結束,Fine del gioco,Partie terminée
+LBL_NEW_HS,New Record!,自己ベスト更新!!!,¡Nuevo récord!,新纪录诞生!!!,新紀錄誕生!!!,Nuovo record!,Nouveau record!
+LBL_SCORE,{0},{0} 笑,{0},{0},{0},{0},{0}
+SET_LANG,Language,言語,Idioma,语言,語言,Idioma,Idioma
+SET_SUB,Subtitles,キャプション,Subtítulos,字幕,字幕,Subtítulos,
+SET_BUT,Comeback Mode,ツッコミモード,Modo de Respuestas Agudas,还嘴模式,回嘴模式,Modalità Obiezione,Mode Répartie 
+SET_BUT_ONE,Primary Key,メインキー,Tecla principal,主键,主鍵,Tasto principale,Touche principale
+SET_BUT_TWO,Secondary Key,サブキー,Tecla secundario,辅键,輔鍵,Tasto secondario,Touche secondaire
+SET_BUT_SIM,Primary Key + Secondary Key,メインキー + サブキー,Tecla principal + Tecla secundario,主键 + 辅键,主鍵 + 輔鍵,Tasto principale + Tasto secondario,Touche principale + Touche secondaire
+SET_CTRL_KEYONE,Primary Key,メインキー,Tecla principal,主键,主鍵,Tasto principale,Touche principale
+SET_CTRL_KEYTWO,Secondary Key,サブキー,Tecla secundario,辅键,輔鍵,Tasto secondario,Touche secondaire
+SET_CTRL_BTNONE,Primary Button,メインボタン,Botón principal,主按钮,主按鈕,Pulsante principale,Bouton principal
+SET_CTRL_BTNTWO,Secondary Button,サブボタン,Botón secundario,副按钮,副按鈕,Pulsante secondario,Bouton secondaire
+SET_RESET_HS,Reset Highscore,ハイスコアリセット,Reiniciar máximo,重置最高分,重置最高分,Ripristina punteggio massimo,Réinitialiser le score maximal
+SET_FULLSCR,Fullscreen,フルスクリーン,Pantalla completa,全屏模式,全螢幕模式,Schermo intero,Plein écran
+SET_APPLY,Apply Settings,設定を適用する,Aplicar configuración,应用设置,應用設定,Applica impostazioni,Appliquer les paramètres
+SET_CTRL_KEYDET,Press a key...,キーを押してください,Presione una tecla...,请按键,請按鍵,Premere un tasto...,Appuyez sur une touche…
+SET_DEF,Restore Default,デフォルトに戻す,Restaurar valores predeterminados,恢复默认,恢復預設,Ripristina predefiniti,Réinitialiser les paramètres 
+SET_GUIDE,Rhythm Indicator,ビートガイド,Indicador de ritmo,节奏指引,節奏指引,Guida al ritmo,Guide de rythme 
