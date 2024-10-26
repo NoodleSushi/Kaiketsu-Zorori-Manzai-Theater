@@ -14,7 +14,7 @@ config/name="Kaiketsu Zorori: Manzai Theater"
 run/main_scene="res://Scenes/Menu.tscn"
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://icon.svg"
 config/name_ja="かいけつゾロリ まんざいげきじょう"
 config/name_es="Kaiketsu Zorori: Teatro de Manzai"
 
